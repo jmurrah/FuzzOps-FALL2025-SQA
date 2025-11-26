@@ -1,4 +1,5 @@
 # SQA Report
+Report your activities and lessons learned.
 
 ## Activities
 1. a
