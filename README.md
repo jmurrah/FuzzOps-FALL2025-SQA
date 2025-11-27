@@ -1,5 +1,5 @@
 # FuzzOps-FALL2025-SQA
-COMP-5710 Course Project
+COMP-5710/COMP-6710 Course Project
 
 ## Team Name
 FuzzOps
