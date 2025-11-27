@@ -2,6 +2,7 @@ import sys
 import random
 import string
 import os
+import csv
 import tempfile
 from datetime import datetime, timedelta
 from contextlib import contextmanager
@@ -137,6 +138,29 @@ def fuzz_check_python_file(iterations):
                 log_bug("checkPythonFile", temp_dir, f"CRASH: {e}")
 
 
+def write_fuzz_artifacts():
+    # Write fuzz_report.csv
+    with open("fuzz_report.csv", "w", newline="", encoding="utf-8") as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(["Function", "Input", "Error"])
+        for bug in BUGS_FOUND:
+            # BUGS_FOUND format: "[!] BUG IN func | Input: ... | Error: ..."
+            parts = bug.replace("[!] BUG IN ", "").split(" | ")
+            func = parts[0]
+            input_desc = parts[1].replace("Input: ", "")
+            error_msg = parts[2].replace("Error: ", "")
+            writer.writerow([func, input_desc, error_msg])
+
+    # Write fuzz_forensics.log
+    with open("fuzz_forensics.log", "w", encoding="utf-8") as f:
+        for bug in BUGS_FOUND:
+            f.write(bug + "\n")
+
+    # Create empty files if no bugs found
+    if not BUGS_FOUND:
+        open("fuzz_report.csv", "w").close()
+        open("fuzz_forensics.log", "w").close()
+
 def main():
     print("--- Starting Fuzzing ---")
     with suppress_stdout():
@@ -145,6 +169,9 @@ def main():
         fuzz_dump_content(NUM_ITERATIONS)
         fuzz_get_python_file_count(NUM_ITERATIONS)
         fuzz_check_python_file(NUM_ITERATIONS)
+
+    # Write CSV and log files for GitHub Actions
+    write_fuzz_artifacts()
 
     if BUGS_FOUND:
         print(f"\n[FAILURE] Found {len(BUGS_FOUND)} bugs/crashes.")
