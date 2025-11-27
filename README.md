@@ -9,7 +9,7 @@ FuzzOps
 | Name           | Email              |
 |----------------|--------------------|
 | Kritika Vyas   | kzv0032@auburn.edu |
-| Jacob Murrah   | @auburn.edu |
+| Jacob Murrah   | jhm0068@auburn.edu |
 | Cooper Jackson | cej0054@auburn.edu |
 | JD Wilks       | jdw0143@auburn.edu |
 
