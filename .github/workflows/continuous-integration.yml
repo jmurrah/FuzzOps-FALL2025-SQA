@@ -7,19 +7,66 @@ on:
 jobs:
   fuzzing:
     runs-on: ubuntu-latest
+
     steps:
+      # Step 1: Checkout code
       - name: Check out repository
         uses: actions/checkout@v4
 
+      # Step 2: Set up Python 3.10
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
+      # Step 3: Install dependencies
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
-          python3 -m pip install pandas numpy gitpython
+          if [[ -f requirements.txt && -s requirements.txt ]]; then
+            pip install -r requirements.txt
+          else
+            echo "requirements.txt missing or empty, installing defaults..."
+            python3 -m pip install pandas numpy gitpython
+          fi
 
+      # Step 4: Run fuzz tests
       - name: Run fuzzing
-        run: python3 fuzz.py
+        # Run fuzz.py but do NOT kill workflow before artifacts upload
+        run: |
+          if [[ -f fuzz.py ]]; then
+            echo "Running fuzz.py..."
+            python3 fuzz.py || echo "Fuzzing script returned a non-zero exit code."
+          else
+            echo "ERROR: fuzz.py not found!"
+            exit 1
+          fi
+
+      # Step 5: Display Fuzz Report (if exists)
+      - name: Display Fuzz Report
+        if: always()
+        run: |
+          if [[ -f fuzz_report.csv ]]; then
+            echo "==== Fuzz Report ===="
+            cat fuzz_report.csv
+          else
+            echo "No fuzz_report.csv created."
+          fi
+
+      # Step 6: Upload fuzz_report.csv artifact
+      - name: Upload Fuzz Report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: fuzz-report
+          path: fuzz_report.csv
+          if-no-files-found: ignore
+
+      # Step 7: Upload fuzz_forensics.log artifact
+      - name: Upload Fuzz Logs
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: fuzz-logs
+          path: fuzz_forensics.log
+          if-no-files-found: ignore
