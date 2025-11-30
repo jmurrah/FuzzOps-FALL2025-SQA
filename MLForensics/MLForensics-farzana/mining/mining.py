@@ -9,7 +9,6 @@ import shutil
 from git import Repo, exc 
 import logging
 
-# change to show cooper
 def giveTimeStamp():
   tsObj = time.time()
   strToret = datetime.fromtimestamp(tsObj).strftime('%Y-%m-%d %H:%M:%S')
