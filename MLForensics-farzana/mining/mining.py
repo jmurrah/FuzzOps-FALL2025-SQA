@@ -7,12 +7,13 @@ from datetime import datetime
 import subprocess
 import shutil
 from git import Repo, exc 
+import traceback
 import logging
 logger = logging.getLogger(__name__)
 log_filename = f"mining_forensics.log"
 logging.basicConfig(
     level=logging.DEBUG,
-    format='%(asctime)s | %(name)s | %(levelname)s | %(funcName)s | %(message)s',
+    format='%(asctime)s | %(levelname)-8s | %(funcName)-20s | %(message)s',
     handlers=[
         logging.FileHandler(log_filename, encoding='utf-8'),
         #logging.StreamHandler()  #also log to console
@@ -34,23 +35,47 @@ def deleteRepo(dirName, type_):
         
 # Method for fuzzing/logging     
 def dumpContentIntoFile(strP, fileP):
-    logger.info("dumpContentIntoFile called with file path: %s (type: %s) | content length: %d (type: %s)",
-                 fileP, type(fileP), len(strP), type(strP))
-    fileToWrite = open( fileP, 'w')
-    fileToWrite.write(strP )
-    fileToWrite.close()
-    size = os.stat(fileP).st_size
-    logger.info("dumpContentIntoFile wrote %s bytes to %s", size, fileP)
-    return str(size)
+    logger.info("=" * 80)
+    logger.info("dumpContentIntoFile ENTRY | content_type=%s content_len=%s | path_type=%s path=%s",
+                type(strP).__name__, len(str(strP)), type(fileP).__name__, repr(fileP)[:50])
+    
+    try:
+        fileToWrite = open(fileP, 'w')
+        fileToWrite.write(str(strP))
+        fileToWrite.close()
+        
+        size = os.stat(fileP).st_size
+        logger.info("dumpContentIntoFile EXIT | bytes_written=%d", size)
+        logger.info("=" * 80)
+        return str(size)
+    except Exception as e:
+        logger.error("dumpContentIntoFile CRASHED | error_type=%s | error=%s", type(e).__name__, str(e))
+        logger.info("=" * 80)
+        raise
   
 # Method for fuzzing/logging
 def makeChunks(the_list, size_):
-    logger.info("makeChunks called with list of length %s (type: %s) | size %s (type: %s)",
-                 len(the_list), type(the_list), size_, type(size_))
-    for i in range(0, len(the_list), size_):
-        yield the_list[i:i+size_]
+    logger.info("=" * 80)
+    logger.info("makeChunks ENTRY | list_len=%s list_type=%s | size=%s size_type=%s", 
+                len(the_list), type(the_list).__name__, repr(size_), type(size_).__name__)
+    
+    try:
+        chunk_count = (len(the_list) + size_ - 1) // size_
+        logger.info("makeChunks: expected_chunks=%s", chunk_count)
         
-    logger.info("makeChunks yielded %d chunks", (len(the_list) + size_ - 1) // size_)
+        actual_chunks = 0
+        for i in range(0, len(the_list), size_):
+            chunk = the_list[i:i+size_]
+            actual_chunks += 1
+            logger.debug("makeChunks: chunk#%d | range=[%d:%s] | size=%d", actual_chunks, i, i+size_, len(chunk))
+            yield chunk
+        
+        logger.info("makeChunks EXIT | chunks_yielded=%d", actual_chunks)
+        logger.info("=" * 80)
+    except Exception as e:
+        logger.error("makeChunks CRASHED | error_type=%s | error=%s", type(e).__name__, str(e))
+        logger.info("=" * 80)
+        raise
         
 def cloneRepo(repo_name, target_dir):
     cmd_ = "git clone " + repo_name + " " + target_dir 
@@ -60,41 +85,64 @@ def cloneRepo(repo_name, target_dir):
        print('Skipping this repo ... trouble cloning repo:', repo_name )
 
 # Method for fuzzing/logging
-def checkPythonFile(path2dir): 
-    logger.info("checkPythonFile called with path: %s (type: %s)",
-                 path2dir, type(path2dir))
-    usageCount = 0
-    patternDict = ['sklearn', 'h5py', 'gym', 'rl', 'tensorflow', 'keras', 'tf', 'stable_baselines', 'tensorforce', 'rl_coach', 'pyqlearning', 'MAMEToolkit', 'chainer', 'torch', 'chainerrl']
-    for root_, dirnames, filenames in os.walk(path2dir):
-        logger.debug("Walking through directory: %s", root_)
-        for file_ in filenames:
-            full_path_file = os.path.join(root_, file_) 
-            if(os.path.exists(full_path_file)):
-                logger.debug("Processing file: %s", full_path_file)
-                if ((file_.endswith('py')) or (file_.endswith('ipynb')))  :
-                    f = open(full_path_file, 'r', encoding='latin-1')
-                    pythonFileContent = f.read()
-                    pythonFileContent = pythonFileContent.split('\n') 
-                    pythonFileContent = [z_.lower() for z_ in pythonFileContent if z_!='\n' ]
-                    for content_ in pythonFileContent:
-                        for item_ in patternDict:
-                            if(item_ in content_):
-                                usageCount = usageCount + 1
-                                print('item_->->->',  content_)                    
-    logger.info("checkPythonFile found %d pattern usages in %s",
-                  usageCount, path2dir)
-    return usageCount  
+def checkPythonFile(path2dir):
+    logger.info("=" * 80)
+    logger.info("checkPythonFile ENTRY | path_type=%s path=%s",
+                type(path2dir).__name__, repr(path2dir)[:50])
+    
+    try:
+        usageCount = 0
+        files_processed = 0
+        patternDict = ['sklearn', 'h5py', 'gym', 'rl', 'tensorflow', 'keras', 'tf', 
+                       'stable_baselines', 'tensorforce', 'rl_coach', 'pyqlearning', 
+                       'MAMEToolkit', 'chainer', 'torch', 'chainerrl']
+        
+        for root_, dirnames, filenames in os.walk(path2dir):
+            for file_ in filenames:
+                full_path_file = os.path.join(root_, file_)
+                
+                if os.path.exists(full_path_file):
+                    if (file_.endswith('py')) or (file_.endswith('ipynb')):
+                        files_processed += 1
+                        logger.debug("checkPythonFile: processing file#%d | %s", files_processed, file_)
+                        
+                        f = open(full_path_file, 'r', encoding='latin-1')
+                        pythonFileContent = f.read()
+                        pythonFileContent = pythonFileContent.split('\n')
+                        pythonFileContent = [z_.lower() for z_ in pythonFileContent if z_ != '\n']
+                        
+                        for content_ in pythonFileContent:
+                            for item_ in patternDict:
+                                if item_ in content_:
+                                    usageCount += 1
+                                    logger.debug("checkPythonFile: match#%d | pattern=%s", usageCount, item_)
+        
+        logger.info("checkPythonFile EXIT | files_processed=%d | total_matches=%d", files_processed, usageCount)
+        logger.info("=" * 80)
+        return usageCount
+    except Exception as e:
+        logger.error("checkPythonFile CRASHED | error_type=%s | error=%s", type(e).__name__, str(e))
+        logger.info("=" * 80)
+        raise
     
 # Method for fuzzing/logging
 def days_between(d1_, d2_): ## pass in date time objects, if string see commented code 
     # d1_ = datetime.strptime(d1_, "%Y-%m-%d")
     # d2_ = datetime.strptime(d2_, "%Y-%m-%d")
-    logger.info("days between called with d1=%s type(%s) | d2=%s type(%s)",
-                 d1_, type(d1_), d2_, type(d2_))
-    days_between = abs((d2_ - d1_).days)
-    logger.info("days between result: %d", days_between)       
-    return days_between
+    logger.info("=" * 80)
+    logger.info("days_between ENTRY | d1_type=%s d1=%s | d2_type=%s d2=%s",
+                type(d1_).__name__, str(d1_), type(d2_).__name__, str(d2_))
     
+    try:
+        days_between = abs((d2_ - d1_).days)
+        
+        logger.info("days_between EXIT | result=%d", days_between)
+        logger.info("=" * 80)
+        return days_between
+    except Exception as e:
+        logger.error("days_between CRASHED | error_type=%s | error=%s", type(e).__name__, str(e))
+        logger.info("=" * 80)
+        raise
     
 def getDevEmailForCommit(repo_path_param, hash_):
     author_emails = []
@@ -155,16 +203,25 @@ def getDevDayCount(full_path_to_repo, branchName='master', explore=1000):
             
 # Method for fuzzing/logging
 def getPythonFileCount(path2dir):
-    logger.info("getPythonFileCount called with path: %s (type: %s)",
-                 path2dir, type(path2dir))
-    valid_list = [] 
-    for _, _, filenames in os.walk(path2dir):
-        for file_ in filenames:
-            if ((file_.endswith('py')) or (file_.endswith('ipynb'))):
-                valid_list.append(file_)
-    logger.debug("getPythonFileCount found %d python files in %s",
-                  len(valid_list), path2dir)
-    return len(valid_list)   
+    logger.info("=" * 80)
+    logger.info("getPythonFileCount ENTRY | path_type=%s path=%s",
+                type(path2dir).__name__, repr(path2dir)[:50])
+    
+    try:
+        valid_list = []
+        for root_, dirnames, filenames in os.walk(path2dir):
+            for file_ in filenames:
+                if (file_.endswith('py')) or (file_.endswith('ipynb')):
+                    valid_list.append(file_)
+                    logger.debug("getPythonFileCount: found file#%d | %s", len(valid_list), file_)
+        
+        logger.info("getPythonFileCount EXIT | python_files=%d", len(valid_list))
+        logger.info("=" * 80)
+        return len(valid_list)
+    except Exception as e:
+        logger.error("getPythonFileCount CRASHED | error_type=%s | error=%s", type(e).__name__, str(e))
+        logger.info("=" * 80)
+        raise
     
     
 
