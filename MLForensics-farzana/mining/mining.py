@@ -6,9 +6,8 @@ import time
 from datetime import datetime
 import subprocess
 import shutil
-from git import Repo
-from git import exc 
-
+from git import Repo, exc 
+import logging
 
 def giveTimeStamp():
   tsObj = time.time()
@@ -24,18 +23,25 @@ def deleteRepo(dirName, type_):
     except OSError:
         print('Failed deleting, will try manually')  
         
-        
+# Method for fuzzing/logging     
 def dumpContentIntoFile(strP, fileP):
+    logging.info("dumpContentIntoFile called with file path: %s (type: %s) | content length: %d (type: %s)",
+                 fileP, type(fileP), len(strP), type(strP))
     fileToWrite = open( fileP, 'w')
     fileToWrite.write(strP )
     fileToWrite.close()
-    return str(os.stat(fileP).st_size)
+    size = os.stat(fileP).st_size
+    logging.info("dumpContentIntoFile wrote %s bytes to %s", size, fileP)
+    return str(size)
   
-  
+# Method for fuzzing/logging
 def makeChunks(the_list, size_):
+    logger.info("makeChunks called with list of length %s (type: %s) | size %s (type: %s)",
+                 len(the_list), type(the_list), size_, type(size_))
     for i in range(0, len(the_list), size_):
         yield the_list[i:i+size_]
         
+    logger.info("makeChunks yielded %d chunks", (len(the_list) + size_ - 1) // size_)
         
 def cloneRepo(repo_name, target_dir):
     cmd_ = "git clone " + repo_name + " " + target_dir 
@@ -44,14 +50,18 @@ def cloneRepo(repo_name, target_dir):
     except subprocess.CalledProcessError:
        print('Skipping this repo ... trouble cloning repo:', repo_name )
 
-
+# Method for fuzzing/logging
 def checkPythonFile(path2dir): 
+    logging.info("checkPythonFile called with path: %s (type: %s)",
+                 path2dir, type(path2dir))
     usageCount = 0
     patternDict = ['sklearn', 'h5py', 'gym', 'rl', 'tensorflow', 'keras', 'tf', 'stable_baselines', 'tensorforce', 'rl_coach', 'pyqlearning', 'MAMEToolkit', 'chainer', 'torch', 'chainerrl']
     for root_, dirnames, filenames in os.walk(path2dir):
+        logging.debug("Walking through directory: %s", root_)
         for file_ in filenames:
             full_path_file = os.path.join(root_, file_) 
             if(os.path.exists(full_path_file)):
+                logging.debug("Processing file: %s", full_path_file)
                 if ((file_.endswith('py')) or (file_.endswith('ipynb')))  :
                     f = open(full_path_file, 'r', encoding='latin-1')
                     pythonFileContent = f.read()
@@ -62,13 +72,19 @@ def checkPythonFile(path2dir):
                             if(item_ in content_):
                                 usageCount = usageCount + 1
                                 print('item_->->->',  content_)                    
+    logger.info("checkPythonFile found %d pattern usages in %s",
+                  usageCount, path2dir)
     return usageCount  
     
-
+# Method for fuzzing/logging
 def days_between(d1_, d2_): ## pass in date time objects, if string see commented code 
     # d1_ = datetime.strptime(d1_, "%Y-%m-%d")
     # d2_ = datetime.strptime(d2_, "%Y-%m-%d")
-    return abs((d2_ - d1_).days)
+    logger.info("days between called with d1=%s type(%s) | d2=%s type(%s)",
+                 d1_, type(d1_), d2_, type(d2_))
+    days_between = abs((d2_ - d1_).days)
+    logger.info("days between result: %d", days_between)       
+    return days_between
     
     
 def getDevEmailForCommit(repo_path_param, hash_):
@@ -128,13 +144,17 @@ def getDevDayCount(full_path_to_repo, branchName='master', explore=1000):
     
     return len(repo_emails) , len(all_commits) , ds_life_days, ds_life_months 
             
-  
+# Method for fuzzing/logging
 def getPythonFileCount(path2dir):
+    logging.info("getPythonFileCount called with path: %s (type: %s)",
+                 path2dir, type(path2dir))
     valid_list = [] 
     for _, _, filenames in os.walk(path2dir):
         for file_ in filenames:
             if ((file_.endswith('py')) or (file_.endswith('ipynb'))):
                 valid_list.append(file_)
+    logger.debug("getPythonFileCount found %d python files in %s",
+                  len(valid_list), path2dir)
     return len(valid_list)   
     
     
