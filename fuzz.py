@@ -2,7 +2,6 @@ import sys
 import random
 import string
 import os
-import csv
 import tempfile
 import traceback
 from datetime import datetime, timedelta
@@ -181,29 +180,18 @@ def fuzz_check_python_file(iterations):
             log_bug("checkPythonFile", f"Iteration {i+1}", e)
 
 
-def write_fuzz_artifacts():
+def initialize_log():
+    """Create/overwrite the log at the start of each run."""
     try:
-        with open("fuzz_report.csv", "w", newline="", encoding="utf-8") as csvfile:
-            writer = csv.writer(csvfile)
-            writer.writerow(
-                ["Function", "Input", "ExceptionType", "Message", "Traceback"]
-            )
-            for bug in BUGS_FOUND:
-                writer.writerow(
-                    [
-                        bug["Function"],
-                        bug["Input"],
-                        bug["ExceptionType"],
-                        bug["Message"],
-                        bug["Traceback"],
-                    ]
-                )
+        with open(LOG_FILE, "w", encoding="utf-8") as f:
+            f.write(f"{datetime.now()} | Fuzz run started\n")
     except Exception as e:
-        sys.__stdout__.write(f"[!] Failed to write CSV: {e}\n")
+        sys.__stdout__.write(f"[!] Failed to initialize log: {e}\n")
 
 
 def main():
     print("--- Starting Fuzzing ---")
+    initialize_log()
     with suppress_stdout():
         fuzz_make_chunks(NUM_ITERATIONS)
         fuzz_days_between(NUM_ITERATIONS)
@@ -211,14 +199,17 @@ def main():
         fuzz_get_python_file_count(NUM_ITERATIONS)
         fuzz_check_python_file(NUM_ITERATIONS)
 
-    write_fuzz_artifacts()
-
     if BUGS_FOUND:
         print(
-            f"\n Error found{len(BUGS_FOUND)} bugs/crashes. Check {LOG_FILE} and fuzz_report.csv for details."
+            f"\n Error found {len(BUGS_FOUND)} bugs/crashes. Check {LOG_FILE} for details."
         )
         sys.exit(1)
     else:
+        try:
+            with open(LOG_FILE, "a", encoding="utf-8") as f:
+                f.write(f"{datetime.now()} | No errors found during fuzzing.\n")
+        except Exception as e:
+            sys.__stdout__.write(f"[!] Failed to finalize log: {e}\n")
         print("\n Fuzzing ran successfully. No bugs found. Code is stable.")
         sys.exit(0)
 

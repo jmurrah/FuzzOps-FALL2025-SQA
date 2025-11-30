@@ -1,0 +1,176 @@
+2025-11-30 11:08:59.439301 | [!] BUG IN makeChunks | Input: Iteration 2 | ValueError: range() arg 3 must not be zero
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 79, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics/MLForensics-farzana/mining/mining.py", line 36, in makeChunks
+    for i in range(0, len(the_list), size_):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: range() arg 3 must not be zero
+
+2025-11-30 11:08:59.441596 | [!] BUG IN makeChunks | Input: Iteration 8 | ValueError: range() arg 3 must not be zero
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 79, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics/MLForensics-farzana/mining/mining.py", line 36, in makeChunks
+    for i in range(0, len(the_list), size_):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: range() arg 3 must not be zero
+
+2025-11-30 11:08:59.443470 | [!] BUG IN makeChunks | Input: Iteration 20 | ValueError: range() arg 3 must not be zero
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 79, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics/MLForensics-farzana/mining/mining.py", line 36, in makeChunks
+    for i in range(0, len(the_list), size_):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: range() arg 3 must not be zero
+
+2025-11-30 11:08:59.445372 | [!] BUG IN makeChunks | Input: Iteration 29 | ValueError: range() arg 3 must not be zero
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 79, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics/MLForensics-farzana/mining/mining.py", line 36, in makeChunks
+    for i in range(0, len(the_list), size_):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: range() arg 3 must not be zero
+
+2025-11-30 11:08:59.448405 | [!] BUG IN makeChunks | Input: Iteration 37 | ValueError: range() arg 3 must not be zero
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 79, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics/MLForensics-farzana/mining/mining.py", line 36, in makeChunks
+    for i in range(0, len(the_list), size_):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: range() arg 3 must not be zero
+
+2025-11-30 11:08:59.451807 | [!] BUG IN makeChunks | Input: Iteration 38 | ValueError: range() arg 3 must not be zero
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 79, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics/MLForensics-farzana/mining/mining.py", line 36, in makeChunks
+    for i in range(0, len(the_list), size_):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: range() arg 3 must not be zero
+
+2025-11-30 11:09:13.794552 | [!] BUG IN makeChunks | Input: Iteration 2 | ValueError: range() arg 3 must not be zero
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 79, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics/MLForensics-farzana/mining/mining.py", line 36, in makeChunks
+    for i in range(0, len(the_list), size_):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: range() arg 3 must not be zero
+
+2025-11-30 11:09:13.796721 | [!] BUG IN makeChunks | Input: Iteration 4 | ValueError: range() arg 3 must not be zero
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 79, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics/MLForensics-farzana/mining/mining.py", line 36, in makeChunks
+    for i in range(0, len(the_list), size_):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: range() arg 3 must not be zero
+
+2025-11-30 11:09:13.799521 | [!] BUG IN makeChunks | Input: Iteration 6 | ValueError: range() arg 3 must not be zero
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 79, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics/MLForensics-farzana/mining/mining.py", line 36, in makeChunks
+    for i in range(0, len(the_list), size_):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: range() arg 3 must not be zero
+
+2025-11-30 11:09:13.801962 | [!] BUG IN makeChunks | Input: Iteration 17 | ValueError: range() arg 3 must not be zero
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 79, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics/MLForensics-farzana/mining/mining.py", line 36, in makeChunks
+    for i in range(0, len(the_list), size_):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: range() arg 3 must not be zero
+
+2025-11-30 11:09:13.804783 | [!] BUG IN makeChunks | Input: Iteration 20 | ValueError: range() arg 3 must not be zero
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 79, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics/MLForensics-farzana/mining/mining.py", line 36, in makeChunks
+    for i in range(0, len(the_list), size_):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: range() arg 3 must not be zero
+
+2025-11-30 11:09:13.806989 | [!] BUG IN makeChunks | Input: Iteration 22 | ValueError: range() arg 3 must not be zero
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 79, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics/MLForensics-farzana/mining/mining.py", line 36, in makeChunks
+    for i in range(0, len(the_list), size_):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: range() arg 3 must not be zero
+
+2025-11-30 11:09:13.809941 | [!] BUG IN makeChunks | Input: Iteration 24 | ValueError: range() arg 3 must not be zero
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 79, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics/MLForensics-farzana/mining/mining.py", line 36, in makeChunks
+    for i in range(0, len(the_list), size_):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: range() arg 3 must not be zero
+
+2025-11-30 11:09:13.812630 | [!] BUG IN makeChunks | Input: Iteration 26 | ValueError: range() arg 3 must not be zero
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 79, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics/MLForensics-farzana/mining/mining.py", line 36, in makeChunks
+    for i in range(0, len(the_list), size_):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: range() arg 3 must not be zero
+
+2025-11-30 11:09:13.815209 | [!] BUG IN makeChunks | Input: Iteration 41 | ValueError: range() arg 3 must not be zero
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 79, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics/MLForensics-farzana/mining/mining.py", line 36, in makeChunks
+    for i in range(0, len(the_list), size_):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: range() arg 3 must not be zero
+
+2025-11-30 11:09:13.817825 | [!] BUG IN makeChunks | Input: Iteration 43 | ValueError: range() arg 3 must not be zero
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 79, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics/MLForensics-farzana/mining/mining.py", line 36, in makeChunks
+    for i in range(0, len(the_list), size_):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: range() arg 3 must not be zero
+

@@ -30,9 +30,8 @@ The fuzz testing script (`fuzz.py`) automatically generates random inputs to tes
   - `getPythonFileCount`
   - `checkPythonFile`
 - Logs errors with full tracebacks for debugging.
-- Generates structured log reports:
-  - `fuzz_report.csv` – summary of bugs
-  - `fuzz_forensics.log` – detailed logs including errors
+- Generates a detailed log report every run:
+  - `fuzz_forensics.log` – contains run start, errors found, and a "No errors found" note on clean runs
 - Integrated with **GitHub Actions** for automated testing on push and pull request events.
 ---
 
@@ -69,6 +68,6 @@ Workflow: .github/workflows/continuous-integration.yml
   - Set up Python 
   - Install dependencies 
   - Run fuzz.py 
-  - Upload artifacts (fuzz_report.csv, fuzz_forensics.log) for review 
+  - Upload artifact (fuzz_forensics.log) for review 
   - Artifacts allow team members and instructors to inspect errors directly from GitHub.
 ```

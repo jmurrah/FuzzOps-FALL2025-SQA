@@ -29,25 +29,16 @@ jobs:
       - name: Run fuzzing
         run: |
           echo "Running fuzz.py..."
-          python3 fuzz.py || echo "Fuzzing script returned a non-zero exit code."
+          python3 fuzz.py
 
-      # Step 5: Display Fuzz Report
-      - name: Display Fuzz Report
+      # Step 5: Display fuzz_forensics.log
+      - name: Display Fuzz Logs
         if: always()
         run: |
-          echo "==== Fuzz Report ===="
-          cat fuzz_report.csv
+          echo "==== Fuzz Forensics Log ===="
+          cat fuzz_forensics.log
 
-      # Step 6: Upload fuzz_report.csv artifact
-      - name: Upload Fuzz Report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: fuzz-report
-          path: fuzz_report.csv
-          if-no-files-found: ignore
-
-      # Step 7: Upload fuzz_forensics.log artifact
+      # Step 6: Upload fuzz_forensics.log artifact
       - name: Upload Fuzz Logs
         if: always()
         uses: actions/upload-artifact@v4
