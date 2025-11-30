@@ -7,20 +7,23 @@ import tempfile
 import traceback
 from datetime import datetime, timedelta
 from contextlib import contextmanager
+from importlib.machinery import SourceFileLoader
 
 NUM_ITERATIONS = 50
 BUGS_FOUND = []
 LOG_FILE = "fuzz_forensics.log"
 
-# --- Handle import errors ---
-try:
-    import MLForensics.mining.mining as mining
-except ImportError as e:
-    report = f"[!] CRASH IMPORTING mining module | Error: {type(e).__name__}: {e}"
-    sys.__stdout__.write(report + "\n")
-    with open(LOG_FILE, "a", encoding="utf-8") as f:
-        f.write(f"{datetime.now()} | {report}\n")
-    sys.exit(1)
+# import the mining module
+mining = SourceFileLoader(
+    "mining",
+    os.path.join(
+        os.path.dirname(__file__),
+        "MLForensics",
+        "MLForensics-farzana",
+        "mining",
+        "mining.py",
+    ),
+).load_module()
 
 
 @contextmanager
@@ -49,13 +52,17 @@ def log_bug(function_name, input_desc, exc):
     # Write to persistent log
     try:
         with open(LOG_FILE, "a", encoding="utf-8") as f:
-            f.write(f"{datetime.now()} | [!] BUG IN {function_name} | Input: {input_desc} | "
-                    f"{exc_type}: {exc_msg}\nTraceback:\n{tb}\n")
+            f.write(
+                f"{datetime.now()} | [!] BUG IN {function_name} | Input: {input_desc} | "
+                f"{exc_type}: {exc_msg}\nTraceback:\n{tb}\n"
+            )
     except Exception as e:
         sys.__stdout__.write(f"[!] Failed to write log: {e}\n")
     # Also print to real stdout
-    sys.__stdout__.write(f"[!] BUG IN {function_name} | Input: {input_desc} | "
-                         f"{exc_type}: {exc_msg}\n")
+    sys.__stdout__.write(
+        f"[!] BUG IN {function_name} | Input: {input_desc} | "
+        f"{exc_type}: {exc_msg}\n"
+    )
 
 
 def get_random_string(length=100):
@@ -72,7 +79,11 @@ def fuzz_make_chunks(iterations):
             result = list(mining.makeChunks(data, size))
             flattened = [item for sublist in result for item in sublist]
             if flattened != data:
-                log_bug("makeChunks", f"Size: {size} (Iteration {i+1})", Exception("Output data mismatch"))
+                log_bug(
+                    "makeChunks",
+                    f"Size: {size} (Iteration {i+1})",
+                    Exception("Output data mismatch"),
+                )
         except Exception as e:
             log_bug("makeChunks", f"Iteration {i+1}", e)
 
@@ -86,9 +97,17 @@ def fuzz_days_between(iterations):
             val = mining.days_between(d1, d2)
             expected = abs((d2 - d1).days)
             if val < 0:
-                log_bug("days_between", f"{d1} vs {d2} (Iteration {i+1})", Exception("Negative days returned"))
+                log_bug(
+                    "days_between",
+                    f"{d1} vs {d2} (Iteration {i+1})",
+                    Exception("Negative days returned"),
+                )
             if val != expected:
-                log_bug("days_between", f"{d1} vs {d2} (Iteration {i+1})", Exception(f"Math error: Got {val}, Expected {expected}"))
+                log_bug(
+                    "days_between",
+                    f"{d1} vs {d2} (Iteration {i+1})",
+                    Exception(f"Math error: Got {val}, Expected {expected}"),
+                )
         except Exception as e:
             log_bug("days_between", f"Iteration {i+1}", e)
 
@@ -98,12 +117,22 @@ def fuzz_dump_content(iterations):
         try:
             content = get_random_string(random.randint(10, 500))
             with tempfile.TemporaryDirectory() as temp_dir:
-                target_path = os.path.join(temp_dir, f"fuzz_test_{random.randint(0,1000)}.txt")
+                target_path = os.path.join(
+                    temp_dir, f"fuzz_test_{random.randint(0,1000)}.txt"
+                )
                 size_str = mining.dumpContentIntoFile(content, target_path)
                 if not os.path.exists(target_path):
-                    log_bug("dumpContentIntoFile", f"Iteration {i+1}", Exception("File not created"))
+                    log_bug(
+                        "dumpContentIntoFile",
+                        f"Iteration {i+1}",
+                        Exception("File not created"),
+                    )
                 if str(len(content)) != size_str:
-                    log_bug("dumpContentIntoFile", f"Iteration {i+1}", Exception(f"Size mismatch: returned {size_str}"))
+                    log_bug(
+                        "dumpContentIntoFile",
+                        f"Iteration {i+1}",
+                        Exception(f"Size mismatch: returned {size_str}"),
+                    )
         except Exception as e:
             log_bug("dumpContentIntoFile", f"Iteration {i+1}", e)
 
@@ -120,7 +149,11 @@ def fuzz_get_python_file_count(iterations):
                     open(os.path.join(temp_dir, f"junk{j}.txt"), "w").close()
                 count = mining.getPythonFileCount(temp_dir)
                 if count != py_count:
-                    log_bug("getPythonFileCount", f"Iteration {i+1}", Exception(f"Created {py_count} py files, Counted {count}"))
+                    log_bug(
+                        "getPythonFileCount",
+                        f"Iteration {i+1}",
+                        Exception(f"Created {py_count} py files, Counted {count}"),
+                    )
         except Exception as e:
             log_bug("getPythonFileCount", f"Iteration {i+1}", e)
 
@@ -132,12 +165,18 @@ def fuzz_check_python_file(iterations):
             target_word = random.choice(known_keywords)
             with tempfile.TemporaryDirectory() as temp_dir:
                 f_path = os.path.join(temp_dir, "model.py")
-                content = f"{get_random_string(10)} {target_word} {get_random_string(10)}"
+                content = (
+                    f"{get_random_string(10)} {target_word} {get_random_string(10)}"
+                )
                 with open(f_path, "w", encoding="utf-8") as f:
                     f.write(content)
                 hits = mining.checkPythonFile(temp_dir)
                 if hits == 0:
-                    log_bug("checkPythonFile", f"Iteration {i+1}", Exception(f"Failed to detect keyword '{target_word}'"))
+                    log_bug(
+                        "checkPythonFile",
+                        f"Iteration {i+1}",
+                        Exception(f"Failed to detect keyword '{target_word}'"),
+                    )
         except Exception as e:
             log_bug("checkPythonFile", f"Iteration {i+1}", e)
 
@@ -146,9 +185,19 @@ def write_fuzz_artifacts():
     try:
         with open("fuzz_report.csv", "w", newline="", encoding="utf-8") as csvfile:
             writer = csv.writer(csvfile)
-            writer.writerow(["Function", "Input", "ExceptionType", "Message", "Traceback"])
+            writer.writerow(
+                ["Function", "Input", "ExceptionType", "Message", "Traceback"]
+            )
             for bug in BUGS_FOUND:
-                writer.writerow([bug["Function"], bug["Input"], bug["ExceptionType"], bug["Message"], bug["Traceback"]])
+                writer.writerow(
+                    [
+                        bug["Function"],
+                        bug["Input"],
+                        bug["ExceptionType"],
+                        bug["Message"],
+                        bug["Traceback"],
+                    ]
+                )
     except Exception as e:
         sys.__stdout__.write(f"[!] Failed to write CSV: {e}\n")
 
@@ -165,7 +214,9 @@ def main():
     write_fuzz_artifacts()
 
     if BUGS_FOUND:
-        print(f"\n Error found{len(BUGS_FOUND)} bugs/crashes. Check {LOG_FILE} and fuzz_report.csv for details.")
+        print(
+            f"\n Error found{len(BUGS_FOUND)} bugs/crashes. Check {LOG_FILE} and fuzz_report.csv for details."
+        )
         sys.exit(1)
     else:
         print("\n Fuzzing ran successfully. No bugs found. Code is stable.")

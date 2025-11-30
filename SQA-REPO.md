@@ -9,5 +9,8 @@ Report your activities and lessons learned.
 
 ## Lessons Learned
 
-1. a
-2. b
+1. Fuzz Testing: Learned automated input generation for edge cases.
+2. Error Logging: Implemented comprehensive error handling and tracebacks.
+3. CI/CD: Automated regression testing with GitHub Actions.
+4. Python Exception Handling: Logged multiple types of runtime errors (IndexError, ValueError, OSError, etc.).
+5. SQA Best Practices: Demonstrated reproducibility, traceability, and code robustness.
