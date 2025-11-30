@@ -8,6 +8,7 @@ import subprocess
 import shutil
 from git import Repo
 from git import exc 
+import logging
 
 # change to show cooper
 def giveTimeStamp():
