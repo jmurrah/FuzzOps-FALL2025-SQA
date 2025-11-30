@@ -19,11 +19,11 @@ FuzzOps
 ## Project Overview
 
 This project implements **fuzz testing** for the `MLForensics.mining.mining` Python module.  
-The fuzz testing script (`fuzz.py`) automatically generates random inputs to test core functions, detect crashes, logical errors, or unexpected behavior, and logs detailed reports for analysis.
+The fuzz testing script (`fuzz.py`) automatically generates random inputs to test core methods, detect crashes, logical errors, or unexpected behavior, and logs detailed reports for analysis.
 
 **Key Features:**
 
-- Automated fuzz testing for critical functions:
+- Automated fuzz testing for 5 methods for the `mining.py` within the `MLForensics.zip` file:
   - `makeChunks`
   - `days_between`
   - `dumpContentIntoFile`

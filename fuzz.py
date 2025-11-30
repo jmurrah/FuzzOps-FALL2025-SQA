@@ -49,14 +49,11 @@ def log_bug(function_name, input_desc, exc):
     }
     BUGS_FOUND.append(report)
     # Write to persistent log
-    try:
-        with open(LOG_FILE, "a", encoding="utf-8") as f:
-            f.write(
-                f"{datetime.now()} | [!] BUG IN {function_name} | Input: {input_desc} | "
-                f"{exc_type}: {exc_msg}\nTraceback:\n{tb}\n"
-            )
-    except Exception as e:
-        sys.__stdout__.write(f"[!] Failed to write log: {e}\n")
+    with open(LOG_FILE, "a", encoding="utf-8") as f:
+        f.write(
+            f"{datetime.now()} | [!] BUG IN {function_name} | Input: {input_desc} | "
+            f"{exc_type}: {exc_msg}\nTraceback:\n{tb}\n"
+        )
     # Also print to real stdout
     sys.__stdout__.write(
         f"[!] BUG IN {function_name} | Input: {input_desc} | "
@@ -158,7 +155,23 @@ def fuzz_get_python_file_count(iterations):
 
 
 def fuzz_check_python_file(iterations):
-    known_keywords = ["sklearn", "tensorflow", "keras", "torch"]
+    known_keywords = [
+        "sklearn",
+        "h5py",
+        "gym",
+        "rl",
+        "tensorflow",
+        "keras",
+        "tf",
+        "stable_baselines",
+        "tensorforce",
+        "rl_coach",
+        "pyqlearning",
+        "MAMEToolkit",
+        "chainer",
+        "torch",
+        "chainerrl",
+    ]
     for i in range(iterations):
         try:
             target_word = random.choice(known_keywords)
@@ -181,12 +194,8 @@ def fuzz_check_python_file(iterations):
 
 
 def initialize_log():
-    """Create/overwrite the log at the start of each run."""
-    try:
-        with open(LOG_FILE, "w", encoding="utf-8") as f:
-            f.write(f"{datetime.now()} | Fuzz run started\n")
-    except Exception as e:
-        sys.__stdout__.write(f"[!] Failed to initialize log: {e}\n")
+    with open(LOG_FILE, "w", encoding="utf-8") as f:
+        f.write(f"{datetime.now()} | Fuzz run started\n")
 
 
 def main():
@@ -201,16 +210,13 @@ def main():
 
     if BUGS_FOUND:
         print(
-            f"\n Error found {len(BUGS_FOUND)} bugs/crashes. Check {LOG_FILE} for details."
+            f"\n Errors found, {len(BUGS_FOUND)} bugs/crashes. Check {LOG_FILE} for details."
         )
         sys.exit(1)
     else:
-        try:
-            with open(LOG_FILE, "a", encoding="utf-8") as f:
-                f.write(f"{datetime.now()} | No errors found during fuzzing.\n")
-        except Exception as e:
-            sys.__stdout__.write(f"[!] Failed to finalize log: {e}\n")
-        print("\n Fuzzing ran successfully. No bugs found. Code is stable.")
+        with open(LOG_FILE, "a", encoding="utf-8") as f:
+            f.write(f"{datetime.now()} | No errors found during fuzzing.\n")
+        print("\n No bugs found. Code is stable.")
         sys.exit(0)
 
 
