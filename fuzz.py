@@ -7,6 +7,14 @@ import traceback
 from datetime import datetime, timedelta
 from contextlib import contextmanager
 from importlib.machinery import SourceFileLoader
+from fuzz_cases import (
+    MAKE_CHUNKS_EDGE_CASES,
+    CHECK_PYTHON_EDGE_CASES,
+    CHECK_PYTHON_KEYWORDS,
+    DUMP_CONTENT_EDGE_CASES,
+    PYTHON_FILE_COUNT_EDGE_CASES,
+    days_between_edge_cases,
+)
 
 NUM_ITERATIONS = 20
 BUGS_FOUND = []
@@ -66,19 +74,10 @@ def get_random_string(length=100):
 
 
 def fuzz_make_chunks(iterations):
-    edge_cases = [
-        {"data": [1, 2, 3], "size": 0, "label": "size=0 (range step zero)"},
-        {"data": [1, 2, 3], "size": -1, "label": "size=-1 (negative step)"},
-        {"data": [1, 2, 3], "size": None, "label": "size=None (non-int)"},
-        {"data": [1, 2, 3], "size": "2", "label": "size='2' (string)"},
-        {"data": [1, 2, 3], "size": 2.5, "label": "size=2.5 (float)"},
-        {"data": [], "size": 0, "label": "empty list with size=0"},
-        {"data": [1, 2, 3], "size": 10 ** 9, "label": "huge size"},
-    ]
     for i in range(iterations):
         try:
-            if i < len(edge_cases):
-                case = edge_cases[i]
+            if i < len(MAKE_CHUNKS_EDGE_CASES):
+                case = MAKE_CHUNKS_EDGE_CASES[i]
                 data = case["data"]
                 size = case["size"]
                 label = case["label"]
@@ -112,54 +111,11 @@ def fuzz_make_chunks(iterations):
 
 
 def fuzz_days_between(iterations):
-    edge_cases = [
-        {
-            "d1": datetime(2020, 2, 29),
-            "d2": datetime(2021, 3, 1),
-            "label": "leap year span",
-        },
-        {
-            "d1": datetime.now(),
-            "d2": datetime.now() - timedelta(days=1),
-            "label": "d2 before d1 (1 day apart)",
-        },
-        {
-            "d1": datetime.now(),
-            "d2": datetime.now() + timedelta(seconds=86399),
-            "label": "<1 day apart (should be 0 days)",
-        },
-        {
-            "d1": datetime.now(),
-            "d2": datetime.now() + timedelta(seconds=86401),
-            "label": ">1 day by seconds (should be 1 day)",
-        },
-        {
-            "d1": datetime.max - timedelta(days=1),
-            "d2": datetime.max,
-            "label": "near datetime.max",
-        },
-        {
-            "d1": datetime.min,
-            "d2": datetime.min + timedelta(days=1),
-            "label": "near datetime.min",
-        },
-        {
-            "d1": "2020-01-01",
-            "d2": datetime(2020, 1, 2),
-            "label": "mixed types string/datetime",
-        },
-        {
-            "d1": datetime(2020, 1, 1),
-            "d2": "2020-01-02",
-            "label": "mixed types datetime/string",
-        },
-        {"d1": None, "d2": datetime.now(), "label": "d1 None"},
-        {"d1": datetime.now(), "d2": None, "label": "d2 None"},
-    ]
+    preset_cases = days_between_edge_cases()
     for i in range(iterations):
         try:
-            if i < len(edge_cases):
-                case = edge_cases[i]
+            if i < len(preset_cases):
+                case = preset_cases[i]
                 d1 = case["d1"]
                 d2 = case["d2"]
                 label = case["label"]
@@ -202,43 +158,8 @@ def fuzz_dump_content(iterations):
         label = f"Iteration {i+1}"
         try:
             with tempfile.TemporaryDirectory() as temp_dir:
-                edge_cases = [
-                    {
-                        "label": "empty content valid path",
-                        "content": "",
-                        "path_kind": "valid",
-                    },
-                    {
-                        "label": "None content valid path",
-                        "content": None,
-                        "path_kind": "valid",
-                    },
-                    {"label": "path None", "content": "abc", "path_kind": "none"},
-                    {"label": "path int", "content": "abc", "path_kind": "int"},
-                    {
-                        "label": "path is directory",
-                        "content": "abc",
-                        "path_kind": "dir",
-                    },
-                    {
-                        "label": "missing parent directories",
-                        "content": "abc",
-                        "path_kind": "missing_parent",
-                    },
-                    {
-                        "label": "bytes content",
-                        "content": b"binary-bytes",
-                        "path_kind": "valid",
-                    },
-                    {
-                        "label": "large content",
-                        "content": "x" * 5000,
-                        "path_kind": "valid",
-                    },
-                ]
-
-                if i < len(edge_cases):
-                    case = edge_cases[i]
+                if i < len(DUMP_CONTENT_EDGE_CASES):
+                    case = DUMP_CONTENT_EDGE_CASES[i]
                     content = case["content"]
                     path_kind = case["path_kind"]
                     label = f"{case['label']} (Iteration {i+1})"
@@ -307,19 +228,11 @@ def fuzz_dump_content(iterations):
 
 
 def fuzz_get_python_file_count(iterations):
-    edge_cases = [
-        {"type": "invalid", "path": None, "label": "path None"},
-        {"type": "invalid", "path": 123, "label": "path int"},
-        {"type": "missing_dir", "label": "nonexistent directory"},
-        {"type": "file_path", "label": "file path instead of dir"},
-        {"type": "uppercase_ext", "label": "uppercase extensions"},
-        {"type": "nested_mix", "label": "nested py/ipynb vs junk"},
-    ]
     for i in range(iterations):
         label = f"Iteration {i+1}"
         try:
-            if i < len(edge_cases):
-                case = edge_cases[i]
+            if i < len(PYTHON_FILE_COUNT_EDGE_CASES):
+                case = PYTHON_FILE_COUNT_EDGE_CASES[i]
                 ctype = case["type"]
                 label = f"{case['label']} (Iteration {i+1})"
 
@@ -437,53 +350,10 @@ def fuzz_get_python_file_count(iterations):
 
 
 def fuzz_check_python_file(iterations):
-    known_keywords = [
-        "sklearn",
-        "h5py",
-        "gym",
-        "rl",
-        "tensorflow",
-        "keras",
-        "tf",
-        "stable_baselines",
-        "tensorforce",
-        "rl_coach",
-        "pyqlearning",
-        "MAMEToolkit",
-        "chainer",
-        "torch",
-        "chainerrl",
-    ]
     for i in range(iterations):
         try:
-            edge_cases = [
-                {"type": "invalid", "path": None, "label": "path=None"},
-                {"type": "invalid", "path": 123, "label": "path=int"},
-                {"type": "invalid", "path": "", "label": "path=empty-string"},
-                {
-                    "type": "file_path",
-                    "label": "file path instead of dir",
-                    "keyword": "torch",
-                },
-                {
-                    "type": "py_upper",
-                    "label": "uppercase keyword in .py",
-                    "keyword": "SKLEARN",
-                },
-                {
-                    "type": "ipynb",
-                    "label": "keyword in .ipynb",
-                    "keyword": "tensorflow",
-                },
-                {
-                    "type": "nested",
-                    "label": "nested dirs with multiple keywords",
-                    "keywords": ["keras", "torch"],
-                },
-            ]
-
-            if i < len(edge_cases):
-                case = edge_cases[i]
+            if i < len(CHECK_PYTHON_EDGE_CASES):
+                case = CHECK_PYTHON_EDGE_CASES[i]
                 ctype = case["type"]
                 label = case["label"]
 
@@ -564,7 +434,7 @@ def fuzz_check_python_file(iterations):
 
             # Randomized cases
             with tempfile.TemporaryDirectory() as temp_dir:
-                target_word = random.choice(known_keywords)
+                target_word = random.choice(CHECK_PYTHON_KEYWORDS)
                 fname = random.choice(["model.py", "train.ipynb"])
                 f_path = os.path.join(temp_dir, fname)
                 content = f"{get_random_string(10)} {target_word.upper()} {get_random_string(10)}"
@@ -575,7 +445,7 @@ def fuzz_check_python_file(iterations):
                     nested_dir = os.path.join(temp_dir, "nested")
                     os.makedirs(nested_dir)
                     nested_path = os.path.join(nested_dir, "extra.py")
-                    extra_word = random.choice(known_keywords)
+                    extra_word = random.choice(CHECK_PYTHON_KEYWORDS)
                     with open(nested_path, "w", encoding="utf-8") as f:
                         f.write(f"{extra_word} appears here too")
 
