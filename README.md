@@ -38,19 +38,21 @@ This project implements **whitebox fuzz testing** for the `mining.py` file withi
 
 
 ## Execution Instructions
-**Pre-requisites: Install python3.10+**
-1. **Clone the repository**
+Pre-requisites: Install python3.10+
+1. Clone the repository
 
 ```bash
 git clone https://github.com/jmurrah/FuzzOps-FALL2025-SQA.git
 cd FuzzOps-FALL2025-SQA
-
 ```
+
 2. Create virtual env
-```python3 -m venv fuzzops-venv```
+```bash
+python3 -m venv fuzzops-venv
+```
 
 3. Activate virtual env
-```
+```bash
 source fuzzops-venv/bin/activate
 ```
 
@@ -61,11 +63,11 @@ pip install -r requirements.txt
 
 5. Run fuzzing locally
 ```bash
-python fuzz.py 
+python3 fuzz.py 
 ```
 
-5. **GitHub Actions Integration**
-The project is configured to automatically run fuzz testing using GitHub Actions.
+5. GitHub Actions Integration
+The project is configured to automatically run fuzz testing on `mining.py` using GitHub Actions.
 ```
 Workflow: .github/workflows/continuous-integration.yml
 - Trigger: On push or pull request to feature or main branches.

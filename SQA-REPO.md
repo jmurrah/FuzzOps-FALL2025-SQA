@@ -19,11 +19,7 @@ Report your activities and lessons learned.
 ## Lessons Learned
 
 1. Thoroughly understanding the inputs and code for methods makes generating fuzzing inputs much easier. With a strong understanding of python you can deduce which inputs will cause crashes given the source code for a method.
-2. Implementing logging for methods allow you to see the exact data format and flow of data within 
-
-
-<!-- 1. Fuzz Testing: Learned automated input generation for edge cases.
-2. Error Logging: Implemented comprehensive error handling and tracebacks.
-3. CI/CD: Automated regression testing with GitHub Actions.
-4. Python Exception Handling: Logged multiple types of runtime errors (IndexError, ValueError, OSError, etc.).
-5. SQA Best Practices: Demonstrated reproducibility, traceability, and code robustness. -->
+2. Implementing logging for methods allows you to see the exact data flow and format within a method. Understanding the inputs and outputs of additional calls within a method allows you to create inputs that will break those internal calls.
+3. Setting up GitHub Actions is very simple and also substantially increases your confidence in your code's quality. This makes the barrier of entry to integrating code quality checks extremely small.
+4. Since python is dynamically typed, validating the input data types is very important becuase almost anything can be passed into the methods. This also makes fuzzing a lot more flexible because many more input formats need to be tested.
+5. Utilizing git and GitHub makes collaborating on code seamless. You and a teammate can simultaneously work on the same code from anywhere in the world.
