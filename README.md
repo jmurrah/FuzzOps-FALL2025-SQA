@@ -18,8 +18,9 @@ FuzzOps
 
 ## Project Overview
 
-This project implements **fuzz testing** for the `MLForensics.mining.mining` Python module.  
-The fuzz testing script (`fuzz.py`) automatically generates random inputs to test core methods, detect crashes, logical errors, or unexpected behavior, and logs detailed reports for analysis.
+Rubric: https://github.com/paser-group/continuous-secsoft/tree/master/fall25-sqa/project
+
+This project implements **whitebox fuzz testing** for the `mining.py` file within the `MLForensics.zip` file. The fuzz testing script `fuzz.py` automatically fuzz tests 5 methods in order to detect crashes, logical errors, or unexpected behavior. We then log the fuzzing results to the `fuzz_forensics.log` file for further analysis.
 
 **Key Features:**
 
@@ -32,28 +33,33 @@ The fuzz testing script (`fuzz.py`) automatically generates random inputs to tes
 - Logs errors with full tracebacks for debugging.
 - Generates a detailed log report every run:
   - `fuzz_forensics.log` – contains run start, errors found, and a "No errors found" note on clean runs
-- Integrated with **GitHub Actions** for automated testing on push and pull request events.
+- Integrated with GitHub Actions for automated testing on all commits.
 ---
 
 
-## Setup Instructions
+## Execution Instructions
 **Pre-requisites: Install python3.10+**
 1. **Clone the repository**
 
 ```bash
-git clone git@github.com:jmurrah/FuzzOps-FALL2025-SQA.git
+git clone https://github.com/jmurrah/FuzzOps-FALL2025-SQA.git
 cd FuzzOps-FALL2025-SQA
 
 ```
 2. Create virtual env
-```python3 -m venv venv```
+```python3 -m venv fuzzops-venv```
 
-3. **Install dependencies**
+3. Activate virtual env
+```
+source fuzzops-venv/bin/activate
+```
+
+4. Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-4. **Run fuzz  locally**
+5. Run fuzzing locally
 ```bash
 python fuzz.py 
 ```
@@ -68,6 +74,6 @@ Workflow: .github/workflows/continuous-integration.yml
   - Set up Python 
   - Install dependencies 
   - Run fuzz.py 
-  - Upload artifact (fuzz_forensics.log) for review 
+  - Upload artifact `fuzz_forensics.log` for review 
   - Artifacts allow team members and instructors to inspect errors directly from GitHub.
 ```
