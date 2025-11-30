@@ -7,7 +7,6 @@ from datetime import datetime
 import subprocess
 import shutil
 from git import Repo, exc 
-import traceback
 import logging
 logger = logging.getLogger(__name__)
 log_filename = f"mining_forensics.log"

@@ -31,8 +31,9 @@ This project implements **whitebox fuzz testing** for the `mining.py` file withi
   - `getPythonFileCount`
   - `checkPythonFile`
 - Logs errors with full tracebacks for debugging.
-- Generates a detailed log report every run:
+- Generates detailed log reports every run:
   - `fuzz_forensics.log` – contains run start, errors found, and a "No errors found" note on clean runs
+  - `mining_forensics.log` - contains comprhensive logs for the 5 methods in mining.py. This includes entry/exit points, debug info, type checks, and workflow details.
 - Integrated with GitHub Actions for automated testing on all commits.
 ---
 
