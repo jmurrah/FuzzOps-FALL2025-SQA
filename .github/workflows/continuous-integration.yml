@@ -23,46 +23,22 @@ jobs:
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
-          if [[ -f requirements.txt && -s requirements.txt ]]; then
-            pip install -r requirements.txt
-          else
-            echo "requirements.txt missing or empty, installing defaults..."
-            python3 -m pip install pandas numpy gitpython
-          fi
+          pip install -r requirements.txt
 
       # Step 4: Run fuzz tests
       - name: Run fuzzing
-        # Run fuzz.py but do NOT kill workflow before artifacts upload
         run: |
-          if [[ -f fuzz.py ]]; then
-            echo "Running fuzz.py..."
-            python3 fuzz.py || echo "Fuzzing script returned a non-zero exit code."
-          else
-            echo "ERROR: fuzz.py not found!"
-            exit 1
-          fi
+          echo "Running fuzz.py..."
+          python3 fuzz.py
 
-      # Step 5: Display Fuzz Report (if exists)
-      - name: Display Fuzz Report
+      # Step 5: Display fuzz_forensics.log
+      - name: Display Fuzz Logs
         if: always()
         run: |
-          if [[ -f fuzz_report.csv ]]; then
-            echo "==== Fuzz Report ===="
-            cat fuzz_report.csv
-          else
-            echo "No fuzz_report.csv created."
-          fi
+          echo "==== Fuzz Forensics Log ===="
+          cat fuzz_forensics.log
 
-      # Step 6: Upload fuzz_report.csv artifact
-      - name: Upload Fuzz Report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: fuzz-report
-          path: fuzz_report.csv
-          if-no-files-found: ignore
-
-      # Step 7: Upload fuzz_forensics.log artifact
+      # Step 6: Upload fuzz_forensics.log artifact
       - name: Upload Fuzz Logs
         if: always()
         uses: actions/upload-artifact@v4

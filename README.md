@@ -18,49 +18,57 @@ FuzzOps
 
 ## Project Overview
 
-This project implements **fuzz testing** for the `MLForensics.mining.mining` Python module.  
-The fuzz testing script (`fuzz.py`) automatically generates random inputs to test core functions, detect crashes, logical errors, or unexpected behavior, and logs detailed reports for analysis.
+Rubric: https://github.com/paser-group/continuous-secsoft/tree/master/fall25-sqa/project
+
+This project implements **whitebox fuzz testing** for the `mining.py` file within the `MLForensics.zip` file. The fuzz testing script `fuzz.py` automatically fuzz tests 5 methods in order to detect crashes, logical errors, or unexpected behavior. We then log the fuzzing results to the `fuzz_forensics.log` file for further analysis.
 
 **Key Features:**
 
-- Automated fuzz testing for critical functions:
+- Automated fuzz testing for 5 methods for the `mining.py` within the `MLForensics.zip` file:
   - `makeChunks`
   - `days_between`
   - `dumpContentIntoFile`
   - `getPythonFileCount`
   - `checkPythonFile`
 - Logs errors with full tracebacks for debugging.
-- Generates structured log reports:
-  - `fuzz_report.csv` – summary of bugs
-  - `fuzz_forensics.log` – detailed logs including errors
-- Integrated with **GitHub Actions** for automated testing on push and pull request events.
+- Generates detailed log reports every run:
+  - `fuzz_forensics.log` – contains run start, errors found, and a "No errors found" note on clean runs
+  - `mining_forensics.log` - contains comprhensive logs for the 5 methods in mining.py. This includes entry/exit points, debug info, type checks, and workflow details.
+- Integrated with GitHub Actions for automated testing on all commits.
 ---
 
 
-## Setup Instructions
-**Pre-requisites: Install python3.10+**
-1. **Clone the repository**
+## Execution Instructions
+Pre-requisites: Install python3.10+
+1. Clone the repository
 
 ```bash
-git clone git@github.com:jmurrah/FuzzOps-FALL2025-SQA.git
+git clone https://github.com/jmurrah/FuzzOps-FALL2025-SQA.git
 cd FuzzOps-FALL2025-SQA
-
 ```
-2. Create virtual env
-```python3 -m venv venv```
 
-3. **Install dependencies**
+2. Create virtual env
+```bash
+python3 -m venv fuzzops-venv
+```
+
+3. Activate virtual env
+```bash
+source fuzzops-venv/bin/activate
+```
+
+4. Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-4. **Run fuzz  locally**
+5. Run fuzzing locally
 ```bash
-python fuzz.py 
+python3 fuzz.py 
 ```
 
-5. **GitHub Actions Integration**
-The project is configured to automatically run fuzz testing using GitHub Actions.
+5. GitHub Actions Integration
+The project is configured to automatically run fuzz testing on `mining.py` using GitHub Actions.
 ```
 Workflow: .github/workflows/continuous-integration.yml
 - Trigger: On push or pull request to feature or main branches.
@@ -69,6 +77,6 @@ Workflow: .github/workflows/continuous-integration.yml
   - Set up Python 
   - Install dependencies 
   - Run fuzz.py 
-  - Upload artifacts (fuzz_report.csv, fuzz_forensics.log) for review 
+  - Upload artifact `fuzz_forensics.log` for review 
   - Artifacts allow team members and instructors to inspect errors directly from GitHub.
 ```

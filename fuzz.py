@@ -2,25 +2,34 @@ import sys
 import random
 import string
 import os
-import csv
 import tempfile
 import traceback
 from datetime import datetime, timedelta
 from contextlib import contextmanager
+from importlib.machinery import SourceFileLoader
+from fuzz_cases import (
+    MAKE_CHUNKS_EDGE_CASES,
+    CHECK_PYTHON_EDGE_CASES,
+    CHECK_PYTHON_KEYWORDS,
+    DUMP_CONTENT_EDGE_CASES,
+    PYTHON_FILE_COUNT_EDGE_CASES,
+    days_between_edge_cases,
+)
 
-NUM_ITERATIONS = 50
+NUM_ITERATIONS = 20
 BUGS_FOUND = []
 LOG_FILE = "fuzz_forensics.log"
 
-# --- Handle import errors ---
-try:
-    import MLForensics.mining.mining as mining
-except ImportError as e:
-    report = f"[!] CRASH IMPORTING mining module | Error: {type(e).__name__}: {e}"
-    sys.__stdout__.write(report + "\n")
-    with open(LOG_FILE, "a", encoding="utf-8") as f:
-        f.write(f"{datetime.now()} | {report}\n")
-    sys.exit(1)
+# import the mining module
+mining = SourceFileLoader(
+    "mining",
+    os.path.join(
+        os.path.dirname(__file__),
+        "MLForensics-farzana",
+        "mining",
+        "mining.py",
+    ),
+).load_module()
 
 
 @contextmanager
@@ -47,15 +56,16 @@ def log_bug(function_name, input_desc, exc):
     }
     BUGS_FOUND.append(report)
     # Write to persistent log
-    try:
-        with open(LOG_FILE, "a", encoding="utf-8") as f:
-            f.write(f"{datetime.now()} | [!] BUG IN {function_name} | Input: {input_desc} | "
-                    f"{exc_type}: {exc_msg}\nTraceback:\n{tb}\n")
-    except Exception as e:
-        sys.__stdout__.write(f"[!] Failed to write log: {e}\n")
+    with open(LOG_FILE, "a", encoding="utf-8") as f:
+        f.write(
+            f"{datetime.now()} | [!] BUG IN {function_name} | Input: {input_desc} | "
+            f"{exc_type}: {exc_msg}\nTraceback:\n{tb}\n"
+        )
     # Also print to real stdout
-    sys.__stdout__.write(f"[!] BUG IN {function_name} | Input: {input_desc} | "
-                         f"{exc_type}: {exc_msg}\n")
+    sys.__stdout__.write(
+        f"[!] BUG IN {function_name} | Input: {input_desc} | "
+        f"{exc_type}: {exc_msg}\n"
+    )
 
 
 def get_random_string(length=100):
@@ -66,95 +76,398 @@ def get_random_string(length=100):
 def fuzz_make_chunks(iterations):
     for i in range(iterations):
         try:
-            data_length = random.randint(0, 100)
-            data = [random.randint(0, 100) for _ in range(data_length)]
-            size = random.choice([0, 1, 5, 100, random.randint(1, 20)])
+            if i < len(MAKE_CHUNKS_EDGE_CASES):
+                case = MAKE_CHUNKS_EDGE_CASES[i]
+                data = case["data"]
+                size = case["size"]
+                label = case["label"]
+            else:
+                data_length = random.randint(0, 100)
+                data = [random.randint(0, 100) for _ in range(data_length)]
+                size = random.choice(
+                    [
+                        0,
+                        -1,
+                        1,
+                        5,
+                        100,
+                        random.randint(1, 20),
+                        None,
+                        "3",
+                        2.5,
+                    ]
+                )
+                label = f"Size: {size}"
             result = list(mining.makeChunks(data, size))
             flattened = [item for sublist in result for item in sublist]
             if flattened != data:
-                log_bug("makeChunks", f"Size: {size} (Iteration {i+1})", Exception("Output data mismatch"))
+                log_bug(
+                    "makeChunks",
+                    f"{label} (Iteration {i+1})",
+                    Exception("Output data mismatch"),
+                )
         except Exception as e:
             log_bug("makeChunks", f"Iteration {i+1}", e)
 
 
 def fuzz_days_between(iterations):
+    preset_cases = days_between_edge_cases()
     for i in range(iterations):
         try:
-            start = datetime.now()
-            d1 = start + timedelta(days=random.randint(-5000, 5000))
-            d2 = start + timedelta(days=random.randint(-5000, 5000))
+            if i < len(preset_cases):
+                case = preset_cases[i]
+                d1 = case["d1"]
+                d2 = case["d2"]
+                label = case["label"]
+            else:
+                start = datetime.now()
+                # Randomly pick between valid datetime inputs and invalid types
+                if random.random() < 0.2:
+                    d1 = random.choice(
+                        [None, "2020-01-01", 123, datetime.now().isoformat()]
+                    )
+                else:
+                    d1 = start + timedelta(days=random.randint(-5000, 5000))
+                if random.random() < 0.2:
+                    d2 = random.choice(
+                        [None, "2020-01-02", -5, datetime.now().isoformat()]
+                    )
+                else:
+                    d2 = start + timedelta(days=random.randint(-5000, 5000))
+                label = f"Random d1={d1}, d2={d2}"
             val = mining.days_between(d1, d2)
             expected = abs((d2 - d1).days)
             if val < 0:
-                log_bug("days_between", f"{d1} vs {d2} (Iteration {i+1})", Exception("Negative days returned"))
+                log_bug(
+                    "days_between",
+                    f"{label} (Iteration {i+1})",
+                    Exception("Negative days returned"),
+                )
             if val != expected:
-                log_bug("days_between", f"{d1} vs {d2} (Iteration {i+1})", Exception(f"Math error: Got {val}, Expected {expected}"))
+                log_bug(
+                    "days_between",
+                    f"{label} (Iteration {i+1})",
+                    Exception(f"Math error: Got {val}, Expected {expected}"),
+                )
         except Exception as e:
             log_bug("days_between", f"Iteration {i+1}", e)
 
 
 def fuzz_dump_content(iterations):
     for i in range(iterations):
+        label = f"Iteration {i+1}"
         try:
-            content = get_random_string(random.randint(10, 500))
             with tempfile.TemporaryDirectory() as temp_dir:
-                target_path = os.path.join(temp_dir, f"fuzz_test_{random.randint(0,1000)}.txt")
+                if i < len(DUMP_CONTENT_EDGE_CASES):
+                    case = DUMP_CONTENT_EDGE_CASES[i]
+                    content = case["content"]
+                    path_kind = case["path_kind"]
+                    label = f"{case['label']} (Iteration {i+1})"
+                else:
+                    content = random.choice(
+                        [
+                            get_random_string(random.randint(0, 500)),
+                            "",
+                            None,
+                            b"bytes-" + os.urandom(4),
+                        ]
+                    )
+                    path_kind = random.choice(
+                        ["valid", "missing_parent", "dir", "none", "int"]
+                    )
+                    label = f"Random case path_kind={path_kind} (Iteration {i+1})"
+
+                if path_kind == "valid":
+                    target_path = os.path.join(
+                        temp_dir, f"fuzz_test_{random.randint(0,1000)}.txt"
+                    )
+                elif path_kind == "missing_parent":
+                    target_path = os.path.join(
+                        temp_dir,
+                        "missing_dir",
+                        f"fuzz_test_{random.randint(0,1000)}.txt",
+                    )
+                elif path_kind == "dir":
+                    target_path = temp_dir
+                elif path_kind == "none":
+                    target_path = None
+                elif path_kind == "int":
+                    target_path = random.randint(1, 10)
+                else:
+                    target_path = os.path.join(
+                        temp_dir, f"fuzz_test_{random.randint(0,1000)}.txt"
+                    )
+
                 size_str = mining.dumpContentIntoFile(content, target_path)
-                if not os.path.exists(target_path):
-                    log_bug("dumpContentIntoFile", f"Iteration {i+1}", Exception("File not created"))
-                if str(len(content)) != size_str:
-                    log_bug("dumpContentIntoFile", f"Iteration {i+1}", Exception(f"Size mismatch: returned {size_str}"))
+
+                # Validate successful write cases: only when content and path are strings and a file exists.
+                if isinstance(content, str) and isinstance(target_path, str):
+                    if not os.path.exists(target_path):
+                        log_bug(
+                            "dumpContentIntoFile",
+                            label,
+                            Exception("File not created"),
+                        )
+                    elif str(len(content)) != size_str:
+                        log_bug(
+                            "dumpContentIntoFile",
+                            label,
+                            Exception(f"Size mismatch: returned {size_str}"),
+                        )
+                else:
+                    # If the call unexpectedly succeeded with invalid types, flag it.
+                    log_bug(
+                        "dumpContentIntoFile",
+                        label,
+                        Exception(
+                            f"Unexpected success for content type {type(content)} and path type {type(target_path)}"
+                        ),
+                    )
         except Exception as e:
-            log_bug("dumpContentIntoFile", f"Iteration {i+1}", e)
+            log_bug("dumpContentIntoFile", label, e)
 
 
 def fuzz_get_python_file_count(iterations):
     for i in range(iterations):
+        label = f"Iteration {i+1}"
         try:
+            if i < len(PYTHON_FILE_COUNT_EDGE_CASES):
+                case = PYTHON_FILE_COUNT_EDGE_CASES[i]
+                ctype = case["type"]
+                label = f"{case['label']} (Iteration {i+1})"
+
+                if ctype == "invalid":
+                    count = mining.getPythonFileCount(case["path"])
+                    log_bug(
+                        "getPythonFileCount",
+                        label,
+                        Exception(
+                            f"Expected failure for invalid path, got count {count}"
+                        ),
+                    )
+                    continue
+
+                if ctype == "missing_dir":
+                    missing = os.path.join(
+                        tempfile.gettempdir(), f"missing_dir_{random.randint(0,100000)}"
+                    )
+                    count = mining.getPythonFileCount(missing)
+                    if count != 0:
+                        log_bug(
+                            "getPythonFileCount",
+                            label,
+                            Exception(f"Expected 0 for missing dir, got {count}"),
+                        )
+                    continue
+
+                with tempfile.TemporaryDirectory() as temp_dir:
+                    if ctype == "file_path":
+                        file_path = os.path.join(temp_dir, "lone.py")
+                        open(file_path, "w").close()
+                        count = mining.getPythonFileCount(file_path)
+                        if count != 0:
+                            log_bug(
+                                "getPythonFileCount",
+                                label,
+                                Exception(f"Expected 0 when path is file, got {count}"),
+                            )
+                        continue
+
+                    if ctype == "uppercase_ext":
+                        open(os.path.join(temp_dir, "script.PY"), "w").close()
+                        open(os.path.join(temp_dir, "note.IPYNB"), "w").close()
+                        expected = 2
+                        count = mining.getPythonFileCount(temp_dir)
+                        if count != expected:
+                            log_bug(
+                                "getPythonFileCount",
+                                label,
+                                Exception(f"Expected {expected} files, got {count}"),
+                            )
+                        continue
+
+                    if ctype == "nested_mix":
+                        nested = os.path.join(temp_dir, "nested", "deep")
+                        os.makedirs(nested)
+                        files = [
+                            os.path.join(temp_dir, "root.py"),
+                            os.path.join(temp_dir, "root.ipynb"),
+                            os.path.join(nested, "nested.py"),
+                        ]
+                        junk = [
+                            os.path.join(temp_dir, "root.txt"),
+                            os.path.join(nested, "nested.txt"),
+                        ]
+                        for fpath in files + junk:
+                            open(fpath, "w").close()
+                        expected = len(files)
+                        count = mining.getPythonFileCount(temp_dir)
+                        if count != expected:
+                            log_bug(
+                                "getPythonFileCount",
+                                label,
+                                Exception(f"Expected {expected} files, got {count}"),
+                            )
+                        continue
+
+            # Randomized cases
             with tempfile.TemporaryDirectory() as temp_dir:
-                py_count = random.randint(0, 10)
-                junk_count = random.randint(0, 10)
+                py_count = random.randint(0, 5)
+                ipynb_count = random.randint(0, 5)
+                junk_count = random.randint(0, 5)
+                upper_count = random.randint(0, 2)
+
                 for j in range(py_count):
                     open(os.path.join(temp_dir, f"test{j}.py"), "w").close()
+                for j in range(ipynb_count):
+                    open(os.path.join(temp_dir, f"notebook{j}.ipynb"), "w").close()
                 for j in range(junk_count):
                     open(os.path.join(temp_dir, f"junk{j}.txt"), "w").close()
+                for j in range(upper_count):
+                    open(os.path.join(temp_dir, f"upper{j}.PY"), "w").close()
+
+                # Optionally create nested files
+                if random.random() < 0.5:
+                    nested_dir = os.path.join(temp_dir, "nested")
+                    os.makedirs(nested_dir)
+                    nested_py = random.randint(0, 2)
+                    for j in range(nested_py):
+                        open(os.path.join(nested_dir, f"nested{j}.py"), "w").close()
+                    py_count += nested_py
+
+                expected = py_count + ipynb_count
                 count = mining.getPythonFileCount(temp_dir)
-                if count != py_count:
-                    log_bug("getPythonFileCount", f"Iteration {i+1}", Exception(f"Created {py_count} py files, Counted {count}"))
+                if count != expected:
+                    log_bug(
+                        "getPythonFileCount",
+                        label,
+                        Exception(
+                            f"Expected {expected} (.py + .ipynb) files, got {count}"
+                        ),
+                    )
         except Exception as e:
             log_bug("getPythonFileCount", f"Iteration {i+1}", e)
 
 
 def fuzz_check_python_file(iterations):
-    known_keywords = ["sklearn", "tensorflow", "keras", "torch"]
     for i in range(iterations):
         try:
-            target_word = random.choice(known_keywords)
+            if i < len(CHECK_PYTHON_EDGE_CASES):
+                case = CHECK_PYTHON_EDGE_CASES[i]
+                ctype = case["type"]
+                label = case["label"]
+
+                if ctype == "invalid":
+                    path = case["path"]
+                    hits = mining.checkPythonFile(path)
+                    # No expected hits; just ensure it doesn't silently miscount
+                    continue
+
+                if ctype == "file_path":
+                    with tempfile.TemporaryDirectory() as temp_dir:
+                        file_path = os.path.join(temp_dir, "model.py")
+                        with open(file_path, "w", encoding="utf-8") as f:
+                            f.write(f"{case['keyword']} on a single file path")
+                        hits = mining.checkPythonFile(file_path)
+                        # Passing a file instead of directory should not count as a hit
+                        if hits != 0:
+                            log_bug(
+                                "checkPythonFile",
+                                f"{label} (Iteration {i+1})",
+                                Exception(f"Expected 0 hits for file path, got {hits}"),
+                            )
+                    continue
+
+                if ctype == "py_upper":
+                    with tempfile.TemporaryDirectory() as temp_dir:
+                        file_path = os.path.join(temp_dir, "upper.py")
+                        with open(file_path, "w", encoding="utf-8") as f:
+                            f.write(
+                                f"# {case['keyword']} should be detected case-insensitively"
+                            )
+                        hits = mining.checkPythonFile(temp_dir)
+                        if hits == 0:
+                            log_bug(
+                                "checkPythonFile",
+                                f"{label} (Iteration {i+1})",
+                                Exception(
+                                    f"Failed to detect keyword '{case['keyword']}'"
+                                ),
+                            )
+                    continue
+
+                if ctype == "ipynb":
+                    with tempfile.TemporaryDirectory() as temp_dir:
+                        file_path = os.path.join(temp_dir, "notebook.ipynb")
+                        with open(file_path, "w", encoding="utf-8") as f:
+                            f.write(f"{case['keyword']} inside notebook cell")
+                        hits = mining.checkPythonFile(temp_dir)
+                        if hits == 0:
+                            log_bug(
+                                "checkPythonFile",
+                                f"{label} (Iteration {i+1})",
+                                Exception(
+                                    f"Failed to detect keyword '{case['keyword']}' in ipynb"
+                                ),
+                            )
+                    continue
+
+                if ctype == "nested":
+                    with tempfile.TemporaryDirectory() as temp_dir:
+                        nested = os.path.join(temp_dir, "deep", "deeper")
+                        os.makedirs(nested)
+                        file_path = os.path.join(nested, "nested.py")
+                        with open(file_path, "w", encoding="utf-8") as f:
+                            f.write(
+                                f"{case['keywords'][0]} and {case['keywords'][1]} together"
+                            )
+                        hits = mining.checkPythonFile(temp_dir)
+                        if hits < len(case["keywords"]):
+                            log_bug(
+                                "checkPythonFile",
+                                f"{label} (Iteration {i+1})",
+                                Exception(
+                                    f"Expected at least {len(case['keywords'])} hits, got {hits}"
+                                ),
+                            )
+                    continue
+
+            # Randomized cases
             with tempfile.TemporaryDirectory() as temp_dir:
-                f_path = os.path.join(temp_dir, "model.py")
-                content = f"{get_random_string(10)} {target_word} {get_random_string(10)}"
+                target_word = random.choice(CHECK_PYTHON_KEYWORDS)
+                fname = random.choice(["model.py", "train.ipynb"])
+                f_path = os.path.join(temp_dir, fname)
+                content = f"{get_random_string(10)} {target_word.upper()} {get_random_string(10)}"
                 with open(f_path, "w", encoding="utf-8") as f:
                     f.write(content)
+                # Optionally add a nested file with another keyword
+                if random.random() < 0.5:
+                    nested_dir = os.path.join(temp_dir, "nested")
+                    os.makedirs(nested_dir)
+                    nested_path = os.path.join(nested_dir, "extra.py")
+                    extra_word = random.choice(CHECK_PYTHON_KEYWORDS)
+                    with open(nested_path, "w", encoding="utf-8") as f:
+                        f.write(f"{extra_word} appears here too")
+
                 hits = mining.checkPythonFile(temp_dir)
                 if hits == 0:
-                    log_bug("checkPythonFile", f"Iteration {i+1}", Exception(f"Failed to detect keyword '{target_word}'"))
+                    log_bug(
+                        "checkPythonFile",
+                        f"Iteration {i+1} random case with target '{target_word}'",
+                        Exception(f"Failed to detect keyword '{target_word}'"),
+                    )
         except Exception as e:
             log_bug("checkPythonFile", f"Iteration {i+1}", e)
 
 
-def write_fuzz_artifacts():
-    try:
-        with open("fuzz_report.csv", "w", newline="", encoding="utf-8") as csvfile:
-            writer = csv.writer(csvfile)
-            writer.writerow(["Function", "Input", "ExceptionType", "Message", "Traceback"])
-            for bug in BUGS_FOUND:
-                writer.writerow([bug["Function"], bug["Input"], bug["ExceptionType"], bug["Message"], bug["Traceback"]])
-    except Exception as e:
-        sys.__stdout__.write(f"[!] Failed to write CSV: {e}\n")
+def initialize_log():
+    with open(LOG_FILE, "w", encoding="utf-8") as f:
+        f.write(f"{datetime.now()} | Fuzz run started\n")
 
 
 def main():
     print("--- Starting Fuzzing ---")
+    initialize_log()
     with suppress_stdout():
         fuzz_make_chunks(NUM_ITERATIONS)
         fuzz_days_between(NUM_ITERATIONS)
@@ -162,13 +475,15 @@ def main():
         fuzz_get_python_file_count(NUM_ITERATIONS)
         fuzz_check_python_file(NUM_ITERATIONS)
 
-    write_fuzz_artifacts()
-
     if BUGS_FOUND:
-        print(f"\n Error found{len(BUGS_FOUND)} bugs/crashes. Check {LOG_FILE} and fuzz_report.csv for details.")
+        print(
+            f"\n Errors found, {len(BUGS_FOUND)} bugs/crashes. Check {LOG_FILE} for details."
+        )
         sys.exit(1)
     else:
-        print("\n Fuzzing ran successfully. No bugs found. Code is stable.")
+        with open(LOG_FILE, "a", encoding="utf-8") as f:
+            f.write(f"{datetime.now()} | No errors found during fuzzing.\n")
+        print("\n No bugs found. Code is stable.")
         sys.exit(0)
 
 
