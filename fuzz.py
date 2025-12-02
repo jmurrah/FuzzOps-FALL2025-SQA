@@ -5,7 +5,7 @@ import os
 import tempfile
 import traceback
 from datetime import datetime, timedelta
-from contextlib import contextmanager
+from contextlib import contextmanager, redirect_stdout, redirect_stderr
 from importlib.machinery import SourceFileLoader
 from fuzz_cases import (
     MAKE_CHUNKS_EDGE_CASES,
@@ -18,7 +18,7 @@ from fuzz_cases import (
 
 NUM_ITERATIONS = 20
 BUGS_FOUND = []
-LOG_FILE = "fuzz_forensics.log"
+LOG_FILE = "mining_fuzz_bug_report.log"
 
 # import the mining module
 mining = SourceFileLoader(
@@ -35,12 +35,13 @@ mining = SourceFileLoader(
 @contextmanager
 def suppress_stdout():
     with open(os.devnull, "w") as devnull:
-        old_stdout = sys.stdout
-        sys.stdout = devnull
-        try:
-            yield
-        finally:
-            sys.stdout = old_stdout
+        with redirect_stdout(devnull), redirect_stderr(devnull):
+            old_stdout = sys.stdout
+            sys.stdout = devnull
+            try:
+                yield
+            finally:
+                sys.stdout = old_stdout
 
 
 def log_bug(function_name, input_desc, exc):
