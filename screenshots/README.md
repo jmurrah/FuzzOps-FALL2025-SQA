@@ -11,3 +11,4 @@
 ## Execution of Continuous Integration
 - `CI-Github-Actions.png`
 - `Example-Run-Github-Actions.png`
+- `GithubActions-fails_correclty.png`: GithubAction is expected to fail at the 'run fuzzing' when bugs/crashes are found.
