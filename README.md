@@ -23,7 +23,7 @@ FuzzOps
   - `fuzz_cases.py` - File to cleanly define all the fuzzing inputs to use in our fuzzing functions.
 - Location of continuous integration (CI) build:
   - NOTE: a new CI build is executed after every commit. It is EXPECTED to FAIL since our fuzzing finds bugs in the methods we chose!
-  - Specific build: abc
+  - Specific build: https://github.com/jmurrah/FuzzOps-FALL2025-SQA/actions/runs/19848730308/job/56871043924
   - All builds: https://github.com/jmurrah/FuzzOps-FALL2025-SQA/actions/workflows/continuous-integration.yml
 - `screenshots/` - Folder that contains all screenshots that showing execution of forensics, fuzzing, and continuous integration
 - `SQA-REPO.md` - Report describing what activities we performed and what we have learned
