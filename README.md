@@ -2,6 +2,8 @@
 
 COMP-5710/COMP-6710 Course Project – Fall 2025
 
+GitHub Repo: https://github.com/jmurrah/FuzzOps-FALL2025-SQA
+
 ## Team Name
 FuzzOps
 
