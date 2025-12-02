@@ -28,6 +28,7 @@ FuzzOps
 - `screenshots/` - Folder that contains all screenshots that showing execution of forensics, fuzzing, and continuous integration
 - `SQA-REPO.md` - Report describing what activities we performed and what we have learned
 
+NOTE: When errors/bugs are found during fuzzing, our CI pipeline will FAIL (this is expected).
 
 ## Project Overview
 
@@ -91,3 +92,4 @@ Workflow: .github/workflows/continuous-integration.yml
   - Upload artifact `mining_fuzz_bug_report.log` for review 
   - Artifacts allow team members and instructors to inspect errors directly from GitHub.
 ```
+NOTE: When errors/bugs are found during fuzzing, our CI pipeline will FAIL (this is expected).

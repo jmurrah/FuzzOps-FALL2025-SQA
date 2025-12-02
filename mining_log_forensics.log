@@ -8698,3 +8698,650 @@ abc2025-12-01 23:28:36,794 | INFO     | makeChunks           | =================
 2025-12-01 23:31:38,769 | DEBUG    | checkPythonFile      | checkPythonFile: match#1 | pattern=tf
 2025-12-01 23:31:38,769 | INFO     | checkPythonFile      | checkPythonFile EXIT | files_processed=1 | total_matches=1
 2025-12-01 23:31:38,769 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,490 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,490 | INFO     | makeChunks           | makeChunks ENTRY | list_len=3 list_type=list | size=0 size_type=int
+2025-12-01 23:47:14,490 | ERROR    | makeChunks           | makeChunks CRASHED | error_type=ZeroDivisionError | error=integer division or modulo by zero
+2025-12-01 23:47:14,490 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,494 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,494 | INFO     | makeChunks           | makeChunks ENTRY | list_len=3 list_type=list | size=-1 size_type=int
+2025-12-01 23:47:14,494 | INFO     | makeChunks           | makeChunks: expected_chunks=-1
+2025-12-01 23:47:14,494 | INFO     | makeChunks           | makeChunks EXIT | chunks_yielded=0
+2025-12-01 23:47:14,494 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,495 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,495 | INFO     | makeChunks           | makeChunks ENTRY | list_len=3 list_type=list | size=None size_type=NoneType
+2025-12-01 23:47:14,495 | ERROR    | makeChunks           | makeChunks CRASHED | error_type=TypeError | error=unsupported operand type(s) for +: 'int' and 'NoneType'
+2025-12-01 23:47:14,496 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,498 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,498 | INFO     | makeChunks           | makeChunks ENTRY | list_len=3 list_type=list | size='2' size_type=str
+2025-12-01 23:47:14,498 | ERROR    | makeChunks           | makeChunks CRASHED | error_type=TypeError | error=unsupported operand type(s) for +: 'int' and 'str'
+2025-12-01 23:47:14,498 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,500 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,500 | INFO     | makeChunks           | makeChunks ENTRY | list_len=3 list_type=list | size=2.5 size_type=float
+2025-12-01 23:47:14,500 | INFO     | makeChunks           | makeChunks: expected_chunks=1.0
+2025-12-01 23:47:14,500 | ERROR    | makeChunks           | makeChunks CRASHED | error_type=TypeError | error='float' object cannot be interpreted as an integer
+2025-12-01 23:47:14,500 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,503 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,503 | INFO     | makeChunks           | makeChunks ENTRY | list_len=0 list_type=list | size=0 size_type=int
+2025-12-01 23:47:14,503 | ERROR    | makeChunks           | makeChunks CRASHED | error_type=ZeroDivisionError | error=integer division or modulo by zero
+2025-12-01 23:47:14,504 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,507 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,507 | INFO     | makeChunks           | makeChunks ENTRY | list_len=3 list_type=list | size=1000000000 size_type=int
+2025-12-01 23:47:14,508 | INFO     | makeChunks           | makeChunks: expected_chunks=1
+2025-12-01 23:47:14,508 | DEBUG    | makeChunks           | makeChunks: chunk#1 | range=[0:1000000000] | size=3
+2025-12-01 23:47:14,508 | INFO     | makeChunks           | makeChunks EXIT | chunks_yielded=1
+2025-12-01 23:47:14,508 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,508 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,508 | INFO     | makeChunks           | makeChunks ENTRY | list_len=71 list_type=list | size=None size_type=NoneType
+2025-12-01 23:47:14,508 | ERROR    | makeChunks           | makeChunks CRASHED | error_type=TypeError | error=unsupported operand type(s) for +: 'int' and 'NoneType'
+2025-12-01 23:47:14,508 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,511 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,511 | INFO     | makeChunks           | makeChunks ENTRY | list_len=83 list_type=list | size='3' size_type=str
+2025-12-01 23:47:14,511 | ERROR    | makeChunks           | makeChunks CRASHED | error_type=TypeError | error=unsupported operand type(s) for +: 'int' and 'str'
+2025-12-01 23:47:14,511 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,513 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,513 | INFO     | makeChunks           | makeChunks ENTRY | list_len=23 list_type=list | size=100 size_type=int
+2025-12-01 23:47:14,513 | INFO     | makeChunks           | makeChunks: expected_chunks=1
+2025-12-01 23:47:14,513 | DEBUG    | makeChunks           | makeChunks: chunk#1 | range=[0:100] | size=23
+2025-12-01 23:47:14,514 | INFO     | makeChunks           | makeChunks EXIT | chunks_yielded=1
+2025-12-01 23:47:14,514 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,514 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,514 | INFO     | makeChunks           | makeChunks ENTRY | list_len=8 list_type=list | size=None size_type=NoneType
+2025-12-01 23:47:14,514 | ERROR    | makeChunks           | makeChunks CRASHED | error_type=TypeError | error=unsupported operand type(s) for +: 'int' and 'NoneType'
+2025-12-01 23:47:14,514 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,516 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,516 | INFO     | makeChunks           | makeChunks ENTRY | list_len=42 list_type=list | size=None size_type=NoneType
+2025-12-01 23:47:14,516 | ERROR    | makeChunks           | makeChunks CRASHED | error_type=TypeError | error=unsupported operand type(s) for +: 'int' and 'NoneType'
+2025-12-01 23:47:14,516 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,518 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,519 | INFO     | makeChunks           | makeChunks ENTRY | list_len=71 list_type=list | size=100 size_type=int
+2025-12-01 23:47:14,519 | INFO     | makeChunks           | makeChunks: expected_chunks=1
+2025-12-01 23:47:14,519 | DEBUG    | makeChunks           | makeChunks: chunk#1 | range=[0:100] | size=71
+2025-12-01 23:47:14,519 | INFO     | makeChunks           | makeChunks EXIT | chunks_yielded=1
+2025-12-01 23:47:14,519 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,519 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,519 | INFO     | makeChunks           | makeChunks ENTRY | list_len=83 list_type=list | size=1 size_type=int
+2025-12-01 23:47:14,519 | INFO     | makeChunks           | makeChunks: expected_chunks=83
+2025-12-01 23:47:14,519 | DEBUG    | makeChunks           | makeChunks: chunk#1 | range=[0:1] | size=1
+2025-12-01 23:47:14,519 | DEBUG    | makeChunks           | makeChunks: chunk#2 | range=[1:2] | size=1
+2025-12-01 23:47:14,519 | DEBUG    | makeChunks           | makeChunks: chunk#3 | range=[2:3] | size=1
+2025-12-01 23:47:14,519 | DEBUG    | makeChunks           | makeChunks: chunk#4 | range=[3:4] | size=1
+2025-12-01 23:47:14,519 | DEBUG    | makeChunks           | makeChunks: chunk#5 | range=[4:5] | size=1
+2025-12-01 23:47:14,519 | DEBUG    | makeChunks           | makeChunks: chunk#6 | range=[5:6] | size=1
+2025-12-01 23:47:14,520 | DEBUG    | makeChunks           | makeChunks: chunk#7 | range=[6:7] | size=1
+2025-12-01 23:47:14,520 | DEBUG    | makeChunks           | makeChunks: chunk#8 | range=[7:8] | size=1
+2025-12-01 23:47:14,520 | DEBUG    | makeChunks           | makeChunks: chunk#9 | range=[8:9] | size=1
+2025-12-01 23:47:14,520 | DEBUG    | makeChunks           | makeChunks: chunk#10 | range=[9:10] | size=1
+2025-12-01 23:47:14,520 | DEBUG    | makeChunks           | makeChunks: chunk#11 | range=[10:11] | size=1
+2025-12-01 23:47:14,520 | DEBUG    | makeChunks           | makeChunks: chunk#12 | range=[11:12] | size=1
+2025-12-01 23:47:14,521 | DEBUG    | makeChunks           | makeChunks: chunk#13 | range=[12:13] | size=1
+2025-12-01 23:47:14,521 | DEBUG    | makeChunks           | makeChunks: chunk#14 | range=[13:14] | size=1
+2025-12-01 23:47:14,521 | DEBUG    | makeChunks           | makeChunks: chunk#15 | range=[14:15] | size=1
+2025-12-01 23:47:14,521 | DEBUG    | makeChunks           | makeChunks: chunk#16 | range=[15:16] | size=1
+2025-12-01 23:47:14,521 | DEBUG    | makeChunks           | makeChunks: chunk#17 | range=[16:17] | size=1
+2025-12-01 23:47:14,521 | DEBUG    | makeChunks           | makeChunks: chunk#18 | range=[17:18] | size=1
+2025-12-01 23:47:14,521 | DEBUG    | makeChunks           | makeChunks: chunk#19 | range=[18:19] | size=1
+2025-12-01 23:47:14,521 | DEBUG    | makeChunks           | makeChunks: chunk#20 | range=[19:20] | size=1
+2025-12-01 23:47:14,521 | DEBUG    | makeChunks           | makeChunks: chunk#21 | range=[20:21] | size=1
+2025-12-01 23:47:14,521 | DEBUG    | makeChunks           | makeChunks: chunk#22 | range=[21:22] | size=1
+2025-12-01 23:47:14,521 | DEBUG    | makeChunks           | makeChunks: chunk#23 | range=[22:23] | size=1
+2025-12-01 23:47:14,521 | DEBUG    | makeChunks           | makeChunks: chunk#24 | range=[23:24] | size=1
+2025-12-01 23:47:14,521 | DEBUG    | makeChunks           | makeChunks: chunk#25 | range=[24:25] | size=1
+2025-12-01 23:47:14,521 | DEBUG    | makeChunks           | makeChunks: chunk#26 | range=[25:26] | size=1
+2025-12-01 23:47:14,522 | DEBUG    | makeChunks           | makeChunks: chunk#27 | range=[26:27] | size=1
+2025-12-01 23:47:14,522 | DEBUG    | makeChunks           | makeChunks: chunk#28 | range=[27:28] | size=1
+2025-12-01 23:47:14,522 | DEBUG    | makeChunks           | makeChunks: chunk#29 | range=[28:29] | size=1
+2025-12-01 23:47:14,522 | DEBUG    | makeChunks           | makeChunks: chunk#30 | range=[29:30] | size=1
+2025-12-01 23:47:14,522 | DEBUG    | makeChunks           | makeChunks: chunk#31 | range=[30:31] | size=1
+2025-12-01 23:47:14,522 | DEBUG    | makeChunks           | makeChunks: chunk#32 | range=[31:32] | size=1
+2025-12-01 23:47:14,522 | DEBUG    | makeChunks           | makeChunks: chunk#33 | range=[32:33] | size=1
+2025-12-01 23:47:14,522 | DEBUG    | makeChunks           | makeChunks: chunk#34 | range=[33:34] | size=1
+2025-12-01 23:47:14,522 | DEBUG    | makeChunks           | makeChunks: chunk#35 | range=[34:35] | size=1
+2025-12-01 23:47:14,522 | DEBUG    | makeChunks           | makeChunks: chunk#36 | range=[35:36] | size=1
+2025-12-01 23:47:14,522 | DEBUG    | makeChunks           | makeChunks: chunk#37 | range=[36:37] | size=1
+2025-12-01 23:47:14,523 | DEBUG    | makeChunks           | makeChunks: chunk#38 | range=[37:38] | size=1
+2025-12-01 23:47:14,523 | DEBUG    | makeChunks           | makeChunks: chunk#39 | range=[38:39] | size=1
+2025-12-01 23:47:14,523 | DEBUG    | makeChunks           | makeChunks: chunk#40 | range=[39:40] | size=1
+2025-12-01 23:47:14,523 | DEBUG    | makeChunks           | makeChunks: chunk#41 | range=[40:41] | size=1
+2025-12-01 23:47:14,523 | DEBUG    | makeChunks           | makeChunks: chunk#42 | range=[41:42] | size=1
+2025-12-01 23:47:14,523 | DEBUG    | makeChunks           | makeChunks: chunk#43 | range=[42:43] | size=1
+2025-12-01 23:47:14,523 | DEBUG    | makeChunks           | makeChunks: chunk#44 | range=[43:44] | size=1
+2025-12-01 23:47:14,523 | DEBUG    | makeChunks           | makeChunks: chunk#45 | range=[44:45] | size=1
+2025-12-01 23:47:14,524 | DEBUG    | makeChunks           | makeChunks: chunk#46 | range=[45:46] | size=1
+2025-12-01 23:47:14,524 | DEBUG    | makeChunks           | makeChunks: chunk#47 | range=[46:47] | size=1
+2025-12-01 23:47:14,524 | DEBUG    | makeChunks           | makeChunks: chunk#48 | range=[47:48] | size=1
+2025-12-01 23:47:14,524 | DEBUG    | makeChunks           | makeChunks: chunk#49 | range=[48:49] | size=1
+2025-12-01 23:47:14,524 | DEBUG    | makeChunks           | makeChunks: chunk#50 | range=[49:50] | size=1
+2025-12-01 23:47:14,524 | DEBUG    | makeChunks           | makeChunks: chunk#51 | range=[50:51] | size=1
+2025-12-01 23:47:14,524 | DEBUG    | makeChunks           | makeChunks: chunk#52 | range=[51:52] | size=1
+2025-12-01 23:47:14,524 | DEBUG    | makeChunks           | makeChunks: chunk#53 | range=[52:53] | size=1
+2025-12-01 23:47:14,524 | DEBUG    | makeChunks           | makeChunks: chunk#54 | range=[53:54] | size=1
+2025-12-01 23:47:14,524 | DEBUG    | makeChunks           | makeChunks: chunk#55 | range=[54:55] | size=1
+2025-12-01 23:47:14,524 | DEBUG    | makeChunks           | makeChunks: chunk#56 | range=[55:56] | size=1
+2025-12-01 23:47:14,525 | DEBUG    | makeChunks           | makeChunks: chunk#57 | range=[56:57] | size=1
+2025-12-01 23:47:14,525 | DEBUG    | makeChunks           | makeChunks: chunk#58 | range=[57:58] | size=1
+2025-12-01 23:47:14,525 | DEBUG    | makeChunks           | makeChunks: chunk#59 | range=[58:59] | size=1
+2025-12-01 23:47:14,525 | DEBUG    | makeChunks           | makeChunks: chunk#60 | range=[59:60] | size=1
+2025-12-01 23:47:14,525 | DEBUG    | makeChunks           | makeChunks: chunk#61 | range=[60:61] | size=1
+2025-12-01 23:47:14,525 | DEBUG    | makeChunks           | makeChunks: chunk#62 | range=[61:62] | size=1
+2025-12-01 23:47:14,525 | DEBUG    | makeChunks           | makeChunks: chunk#63 | range=[62:63] | size=1
+2025-12-01 23:47:14,525 | DEBUG    | makeChunks           | makeChunks: chunk#64 | range=[63:64] | size=1
+2025-12-01 23:47:14,526 | DEBUG    | makeChunks           | makeChunks: chunk#65 | range=[64:65] | size=1
+2025-12-01 23:47:14,526 | DEBUG    | makeChunks           | makeChunks: chunk#66 | range=[65:66] | size=1
+2025-12-01 23:47:14,526 | DEBUG    | makeChunks           | makeChunks: chunk#67 | range=[66:67] | size=1
+2025-12-01 23:47:14,526 | DEBUG    | makeChunks           | makeChunks: chunk#68 | range=[67:68] | size=1
+2025-12-01 23:47:14,526 | DEBUG    | makeChunks           | makeChunks: chunk#69 | range=[68:69] | size=1
+2025-12-01 23:47:14,526 | DEBUG    | makeChunks           | makeChunks: chunk#70 | range=[69:70] | size=1
+2025-12-01 23:47:14,526 | DEBUG    | makeChunks           | makeChunks: chunk#71 | range=[70:71] | size=1
+2025-12-01 23:47:14,526 | DEBUG    | makeChunks           | makeChunks: chunk#72 | range=[71:72] | size=1
+2025-12-01 23:47:14,526 | DEBUG    | makeChunks           | makeChunks: chunk#73 | range=[72:73] | size=1
+2025-12-01 23:47:14,527 | DEBUG    | makeChunks           | makeChunks: chunk#74 | range=[73:74] | size=1
+2025-12-01 23:47:14,527 | DEBUG    | makeChunks           | makeChunks: chunk#75 | range=[74:75] | size=1
+2025-12-01 23:47:14,527 | DEBUG    | makeChunks           | makeChunks: chunk#76 | range=[75:76] | size=1
+2025-12-01 23:47:14,527 | DEBUG    | makeChunks           | makeChunks: chunk#77 | range=[76:77] | size=1
+2025-12-01 23:47:14,527 | DEBUG    | makeChunks           | makeChunks: chunk#78 | range=[77:78] | size=1
+2025-12-01 23:47:14,527 | DEBUG    | makeChunks           | makeChunks: chunk#79 | range=[78:79] | size=1
+2025-12-01 23:47:14,527 | DEBUG    | makeChunks           | makeChunks: chunk#80 | range=[79:80] | size=1
+2025-12-01 23:47:14,527 | DEBUG    | makeChunks           | makeChunks: chunk#81 | range=[80:81] | size=1
+2025-12-01 23:47:14,527 | DEBUG    | makeChunks           | makeChunks: chunk#82 | range=[81:82] | size=1
+2025-12-01 23:47:14,528 | DEBUG    | makeChunks           | makeChunks: chunk#83 | range=[82:83] | size=1
+2025-12-01 23:47:14,528 | INFO     | makeChunks           | makeChunks EXIT | chunks_yielded=83
+2025-12-01 23:47:14,528 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,528 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,528 | INFO     | makeChunks           | makeChunks ENTRY | list_len=12 list_type=list | size=7 size_type=int
+2025-12-01 23:47:14,528 | INFO     | makeChunks           | makeChunks: expected_chunks=2
+2025-12-01 23:47:14,528 | DEBUG    | makeChunks           | makeChunks: chunk#1 | range=[0:7] | size=7
+2025-12-01 23:47:14,528 | DEBUG    | makeChunks           | makeChunks: chunk#2 | range=[7:14] | size=5
+2025-12-01 23:47:14,528 | INFO     | makeChunks           | makeChunks EXIT | chunks_yielded=2
+2025-12-01 23:47:14,529 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,529 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,529 | INFO     | makeChunks           | makeChunks ENTRY | list_len=16 list_type=list | size=1 size_type=int
+2025-12-01 23:47:14,529 | INFO     | makeChunks           | makeChunks: expected_chunks=16
+2025-12-01 23:47:14,529 | DEBUG    | makeChunks           | makeChunks: chunk#1 | range=[0:1] | size=1
+2025-12-01 23:47:14,529 | DEBUG    | makeChunks           | makeChunks: chunk#2 | range=[1:2] | size=1
+2025-12-01 23:47:14,529 | DEBUG    | makeChunks           | makeChunks: chunk#3 | range=[2:3] | size=1
+2025-12-01 23:47:14,529 | DEBUG    | makeChunks           | makeChunks: chunk#4 | range=[3:4] | size=1
+2025-12-01 23:47:14,529 | DEBUG    | makeChunks           | makeChunks: chunk#5 | range=[4:5] | size=1
+2025-12-01 23:47:14,529 | DEBUG    | makeChunks           | makeChunks: chunk#6 | range=[5:6] | size=1
+2025-12-01 23:47:14,529 | DEBUG    | makeChunks           | makeChunks: chunk#7 | range=[6:7] | size=1
+2025-12-01 23:47:14,530 | DEBUG    | makeChunks           | makeChunks: chunk#8 | range=[7:8] | size=1
+2025-12-01 23:47:14,530 | DEBUG    | makeChunks           | makeChunks: chunk#9 | range=[8:9] | size=1
+2025-12-01 23:47:14,530 | DEBUG    | makeChunks           | makeChunks: chunk#10 | range=[9:10] | size=1
+2025-12-01 23:47:14,530 | DEBUG    | makeChunks           | makeChunks: chunk#11 | range=[10:11] | size=1
+2025-12-01 23:47:14,530 | DEBUG    | makeChunks           | makeChunks: chunk#12 | range=[11:12] | size=1
+2025-12-01 23:47:14,530 | DEBUG    | makeChunks           | makeChunks: chunk#13 | range=[12:13] | size=1
+2025-12-01 23:47:14,530 | DEBUG    | makeChunks           | makeChunks: chunk#14 | range=[13:14] | size=1
+2025-12-01 23:47:14,530 | DEBUG    | makeChunks           | makeChunks: chunk#15 | range=[14:15] | size=1
+2025-12-01 23:47:14,530 | DEBUG    | makeChunks           | makeChunks: chunk#16 | range=[15:16] | size=1
+2025-12-01 23:47:14,530 | INFO     | makeChunks           | makeChunks EXIT | chunks_yielded=16
+2025-12-01 23:47:14,530 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,530 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,530 | INFO     | makeChunks           | makeChunks ENTRY | list_len=72 list_type=list | size=12 size_type=int
+2025-12-01 23:47:14,531 | INFO     | makeChunks           | makeChunks: expected_chunks=6
+2025-12-01 23:47:14,531 | DEBUG    | makeChunks           | makeChunks: chunk#1 | range=[0:12] | size=12
+2025-12-01 23:47:14,531 | DEBUG    | makeChunks           | makeChunks: chunk#2 | range=[12:24] | size=12
+2025-12-01 23:47:14,531 | DEBUG    | makeChunks           | makeChunks: chunk#3 | range=[24:36] | size=12
+2025-12-01 23:47:14,531 | DEBUG    | makeChunks           | makeChunks: chunk#4 | range=[36:48] | size=12
+2025-12-01 23:47:14,531 | DEBUG    | makeChunks           | makeChunks: chunk#5 | range=[48:60] | size=12
+2025-12-01 23:47:14,531 | DEBUG    | makeChunks           | makeChunks: chunk#6 | range=[60:72] | size=12
+2025-12-01 23:47:14,531 | INFO     | makeChunks           | makeChunks EXIT | chunks_yielded=6
+2025-12-01 23:47:14,531 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,531 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,531 | INFO     | makeChunks           | makeChunks ENTRY | list_len=70 list_type=list | size=100 size_type=int
+2025-12-01 23:47:14,531 | INFO     | makeChunks           | makeChunks: expected_chunks=1
+2025-12-01 23:47:14,531 | DEBUG    | makeChunks           | makeChunks: chunk#1 | range=[0:100] | size=70
+2025-12-01 23:47:14,532 | INFO     | makeChunks           | makeChunks EXIT | chunks_yielded=1
+2025-12-01 23:47:14,532 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,532 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,532 | INFO     | makeChunks           | makeChunks ENTRY | list_len=71 list_type=list | size=None size_type=NoneType
+2025-12-01 23:47:14,532 | ERROR    | makeChunks           | makeChunks CRASHED | error_type=TypeError | error=unsupported operand type(s) for +: 'int' and 'NoneType'
+2025-12-01 23:47:14,532 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,534 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,534 | INFO     | makeChunks           | makeChunks ENTRY | list_len=83 list_type=list | size=2.5 size_type=float
+2025-12-01 23:47:14,534 | INFO     | makeChunks           | makeChunks: expected_chunks=33.0
+2025-12-01 23:47:14,534 | ERROR    | makeChunks           | makeChunks CRASHED | error_type=TypeError | error='float' object cannot be interpreted as an integer
+2025-12-01 23:47:14,534 | INFO     | makeChunks           | ================================================================================
+2025-12-01 23:47:14,536 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,536 | INFO     | days_between         | days_between ENTRY | d1_type=datetime d1=2020-02-29 00:00:00 | d2_type=datetime d2=2021-03-01 00:00:00
+2025-12-01 23:47:14,536 | INFO     | days_between         | days_between EXIT | result=366
+2025-12-01 23:47:14,536 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,536 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,536 | INFO     | days_between         | days_between ENTRY | d1_type=datetime d1=2025-12-01 23:47:14.536218 | d2_type=datetime d2=2025-11-30 23:47:14.536218
+2025-12-01 23:47:14,536 | INFO     | days_between         | days_between EXIT | result=1
+2025-12-01 23:47:14,536 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,536 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,536 | INFO     | days_between         | days_between ENTRY | d1_type=datetime d1=2025-12-01 23:47:14.536218 | d2_type=datetime d2=2025-12-02 23:47:13.536218
+2025-12-01 23:47:14,537 | INFO     | days_between         | days_between EXIT | result=0
+2025-12-01 23:47:14,537 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,537 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,537 | INFO     | days_between         | days_between ENTRY | d1_type=datetime d1=2025-12-01 23:47:14.536218 | d2_type=datetime d2=2025-12-02 23:47:15.536218
+2025-12-01 23:47:14,537 | INFO     | days_between         | days_between EXIT | result=1
+2025-12-01 23:47:14,537 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,537 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,538 | INFO     | days_between         | days_between ENTRY | d1_type=datetime d1=9999-12-30 23:59:59.999999 | d2_type=datetime d2=9999-12-31 23:59:59.999999
+2025-12-01 23:47:14,538 | INFO     | days_between         | days_between EXIT | result=1
+2025-12-01 23:47:14,538 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,538 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,538 | INFO     | days_between         | days_between ENTRY | d1_type=datetime d1=0001-01-01 00:00:00 | d2_type=datetime d2=0001-01-02 00:00:00
+2025-12-01 23:47:14,538 | INFO     | days_between         | days_between EXIT | result=1
+2025-12-01 23:47:14,538 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,538 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,539 | INFO     | days_between         | days_between ENTRY | d1_type=str d1=2020-01-01 | d2_type=datetime d2=2020-01-02 00:00:00
+2025-12-01 23:47:14,539 | ERROR    | days_between         | days_between CRASHED | error_type=TypeError | error=unsupported operand type(s) for -: 'datetime.datetime' and 'str'
+2025-12-01 23:47:14,539 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,541 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,541 | INFO     | days_between         | days_between ENTRY | d1_type=datetime d1=2020-01-01 00:00:00 | d2_type=str d2=2020-01-02
+2025-12-01 23:47:14,541 | ERROR    | days_between         | days_between CRASHED | error_type=TypeError | error=unsupported operand type(s) for -: 'str' and 'datetime.datetime'
+2025-12-01 23:47:14,541 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,544 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,544 | INFO     | days_between         | days_between ENTRY | d1_type=NoneType d1=None | d2_type=datetime d2=2025-12-01 23:47:14.536218
+2025-12-01 23:47:14,544 | ERROR    | days_between         | days_between CRASHED | error_type=TypeError | error=unsupported operand type(s) for -: 'datetime.datetime' and 'NoneType'
+2025-12-01 23:47:14,544 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,546 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,546 | INFO     | days_between         | days_between ENTRY | d1_type=datetime d1=2025-12-01 23:47:14.536218 | d2_type=NoneType d2=None
+2025-12-01 23:47:14,546 | ERROR    | days_between         | days_between CRASHED | error_type=TypeError | error=unsupported operand type(s) for -: 'NoneType' and 'datetime.datetime'
+2025-12-01 23:47:14,547 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,549 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,549 | INFO     | days_between         | days_between ENTRY | d1_type=int d1=123 | d2_type=datetime d2=2020-02-16 23:47:14.549001
+2025-12-01 23:47:14,549 | ERROR    | days_between         | days_between CRASHED | error_type=TypeError | error=unsupported operand type(s) for -: 'datetime.datetime' and 'int'
+2025-12-01 23:47:14,549 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,551 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,551 | INFO     | days_between         | days_between ENTRY | d1_type=datetime d1=2025-12-08 23:47:14.551123 | d2_type=datetime d2=2021-03-31 23:47:14.551123
+2025-12-01 23:47:14,551 | INFO     | days_between         | days_between EXIT | result=1713
+2025-12-01 23:47:14,551 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,551 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,551 | INFO     | days_between         | days_between ENTRY | d1_type=datetime d1=2027-03-25 23:47:14.551571 | d2_type=datetime d2=2025-01-11 23:47:14.551571
+2025-12-01 23:47:14,551 | INFO     | days_between         | days_between EXIT | result=803
+2025-12-01 23:47:14,551 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,551 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,552 | INFO     | days_between         | days_between ENTRY | d1_type=datetime d1=2035-09-16 23:47:14.551932 | d2_type=datetime d2=2016-12-11 23:47:14.551932
+2025-12-01 23:47:14,552 | INFO     | days_between         | days_between EXIT | result=6853
+2025-12-01 23:47:14,552 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,552 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,552 | INFO     | days_between         | days_between ENTRY | d1_type=datetime d1=2029-02-13 23:47:14.552252 | d2_type=datetime d2=2027-08-11 23:47:14.552252
+2025-12-01 23:47:14,552 | INFO     | days_between         | days_between EXIT | result=552
+2025-12-01 23:47:14,552 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,552 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,552 | INFO     | days_between         | days_between ENTRY | d1_type=datetime d1=2018-02-02 23:47:14.552578 | d2_type=datetime d2=2020-04-22 23:47:14.552578
+2025-12-01 23:47:14,552 | INFO     | days_between         | days_between EXIT | result=810
+2025-12-01 23:47:14,552 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,552 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,552 | INFO     | days_between         | days_between ENTRY | d1_type=datetime d1=2023-01-13 23:47:14.552854 | d2_type=datetime d2=2027-06-10 23:47:14.552854
+2025-12-01 23:47:14,552 | INFO     | days_between         | days_between EXIT | result=1609
+2025-12-01 23:47:14,553 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,553 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,553 | INFO     | days_between         | days_between ENTRY | d1_type=datetime d1=2015-08-18 23:47:14.553126 | d2_type=datetime d2=2015-06-10 23:47:14.553126
+2025-12-01 23:47:14,553 | INFO     | days_between         | days_between EXIT | result=69
+2025-12-01 23:47:14,553 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,553 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,553 | INFO     | days_between         | days_between ENTRY | d1_type=datetime d1=2027-11-27 23:47:14.553418 | d2_type=str d2=2020-01-02
+2025-12-01 23:47:14,553 | ERROR    | days_between         | days_between CRASHED | error_type=TypeError | error=unsupported operand type(s) for -: 'str' and 'datetime.datetime'
+2025-12-01 23:47:14,553 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,555 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,555 | INFO     | days_between         | days_between ENTRY | d1_type=datetime d1=2038-10-24 23:47:14.555833 | d2_type=datetime d2=2022-07-11 23:47:14.555833
+2025-12-01 23:47:14,556 | INFO     | days_between         | days_between EXIT | result=5949
+2025-12-01 23:47:14,556 | INFO     | days_between         | ================================================================================
+2025-12-01 23:47:14,556 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,556 | INFO     | dumpContentIntoFile  | dumpContentIntoFile ENTRY | content_type=str content_len=0 | path_type=str path='/tmp/tmpeyd7a90g/fuzz_test_998.txt'
+2025-12-01 23:47:14,556 | INFO     | dumpContentIntoFile  | dumpContentIntoFile EXIT | bytes_written=0
+2025-12-01 23:47:14,556 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,557 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,557 | INFO     | dumpContentIntoFile  | dumpContentIntoFile ENTRY | content_type=NoneType content_len=4 | path_type=str path='/tmp/tmpucub16rg/fuzz_test_662.txt'
+2025-12-01 23:47:14,557 | INFO     | dumpContentIntoFile  | dumpContentIntoFile EXIT | bytes_written=4
+2025-12-01 23:47:14,557 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,558 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,558 | INFO     | dumpContentIntoFile  | dumpContentIntoFile ENTRY | content_type=str content_len=3 | path_type=NoneType path=None
+2025-12-01 23:47:14,558 | ERROR    | dumpContentIntoFile  | dumpContentIntoFile CRASHED | error_type=TypeError | error=expected str, bytes or os.PathLike object, not NoneType
+2025-12-01 23:47:14,558 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,561 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,561 | INFO     | dumpContentIntoFile  | dumpContentIntoFile ENTRY | content_type=str content_len=3 | path_type=int path=7
+2025-12-01 23:47:14,561 | ERROR    | dumpContentIntoFile  | dumpContentIntoFile CRASHED | error_type=OSError | error=[Errno 9] Bad file descriptor
+2025-12-01 23:47:14,562 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,565 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,565 | INFO     | dumpContentIntoFile  | dumpContentIntoFile ENTRY | content_type=str content_len=3 | path_type=str path='/tmp/tmp6z6elgbv'
+2025-12-01 23:47:14,565 | ERROR    | dumpContentIntoFile  | dumpContentIntoFile CRASHED | error_type=IsADirectoryError | error=[Errno 21] Is a directory: '/tmp/tmp6z6elgbv'
+2025-12-01 23:47:14,565 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,567 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,567 | INFO     | dumpContentIntoFile  | dumpContentIntoFile ENTRY | content_type=str content_len=3 | path_type=str path='/tmp/tmpftrg1k2y/missing_dir/fuzz_test_621.txt'
+2025-12-01 23:47:14,567 | ERROR    | dumpContentIntoFile  | dumpContentIntoFile CRASHED | error_type=FileNotFoundError | error=[Errno 2] No such file or directory: '/tmp/tmpftrg1k2y/missing_dir/fuzz_test_621.txt'
+2025-12-01 23:47:14,567 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,570 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,570 | INFO     | dumpContentIntoFile  | dumpContentIntoFile ENTRY | content_type=bytes content_len=15 | path_type=str path='/tmp/tmpn81r3cs0/fuzz_test_213.txt'
+2025-12-01 23:47:14,571 | INFO     | dumpContentIntoFile  | dumpContentIntoFile EXIT | bytes_written=15
+2025-12-01 23:47:14,571 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,573 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,573 | INFO     | dumpContentIntoFile  | dumpContentIntoFile ENTRY | content_type=str content_len=5000 | path_type=str path='/tmp/tmptr8mx6hs/fuzz_test_574.txt'
+2025-12-01 23:47:14,573 | INFO     | dumpContentIntoFile  | dumpContentIntoFile EXIT | bytes_written=5000
+2025-12-01 23:47:14,573 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,573 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,573 | INFO     | dumpContentIntoFile  | dumpContentIntoFile ENTRY | content_type=NoneType content_len=4 | path_type=NoneType path=None
+2025-12-01 23:47:14,574 | ERROR    | dumpContentIntoFile  | dumpContentIntoFile CRASHED | error_type=TypeError | error=expected str, bytes or os.PathLike object, not NoneType
+2025-12-01 23:47:14,574 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,575 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,576 | INFO     | dumpContentIntoFile  | dumpContentIntoFile ENTRY | content_type=str content_len=448 | path_type=str path='/tmp/tmph5rbh7ag/fuzz_test_666.txt'
+2025-12-01 23:47:14,576 | INFO     | dumpContentIntoFile  | dumpContentIntoFile EXIT | bytes_written=448
+2025-12-01 23:47:14,576 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,576 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,576 | INFO     | dumpContentIntoFile  | dumpContentIntoFile ENTRY | content_type=str content_len=0 | path_type=NoneType path=None
+2025-12-01 23:47:14,576 | ERROR    | dumpContentIntoFile  | dumpContentIntoFile CRASHED | error_type=TypeError | error=expected str, bytes or os.PathLike object, not NoneType
+2025-12-01 23:47:14,576 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,578 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,579 | INFO     | dumpContentIntoFile  | dumpContentIntoFile ENTRY | content_type=str content_len=356 | path_type=int path=10
+2025-12-01 23:47:14,579 | ERROR    | dumpContentIntoFile  | dumpContentIntoFile CRASHED | error_type=OSError | error=[Errno 9] Bad file descriptor
+2025-12-01 23:47:14,579 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,581 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,581 | INFO     | dumpContentIntoFile  | dumpContentIntoFile ENTRY | content_type=NoneType content_len=4 | path_type=str path='/tmp/tmpypsvbwol'
+2025-12-01 23:47:14,581 | ERROR    | dumpContentIntoFile  | dumpContentIntoFile CRASHED | error_type=IsADirectoryError | error=[Errno 21] Is a directory: '/tmp/tmpypsvbwol'
+2025-12-01 23:47:14,581 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,584 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,584 | INFO     | dumpContentIntoFile  | dumpContentIntoFile ENTRY | content_type=bytes content_len=19 | path_type=str path='/tmp/tmp0h81kzz9'
+2025-12-01 23:47:14,584 | ERROR    | dumpContentIntoFile  | dumpContentIntoFile CRASHED | error_type=IsADirectoryError | error=[Errno 21] Is a directory: '/tmp/tmp0h81kzz9'
+2025-12-01 23:47:14,584 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,586 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,586 | INFO     | dumpContentIntoFile  | dumpContentIntoFile ENTRY | content_type=bytes content_len=22 | path_type=NoneType path=None
+2025-12-01 23:47:14,586 | ERROR    | dumpContentIntoFile  | dumpContentIntoFile CRASHED | error_type=TypeError | error=expected str, bytes or os.PathLike object, not NoneType
+2025-12-01 23:47:14,586 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,588 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,588 | INFO     | dumpContentIntoFile  | dumpContentIntoFile ENTRY | content_type=NoneType content_len=4 | path_type=str path='/tmp/tmpjqjlhnsy/missing_dir/fuzz_test_886.txt'
+2025-12-01 23:47:14,588 | ERROR    | dumpContentIntoFile  | dumpContentIntoFile CRASHED | error_type=FileNotFoundError | error=[Errno 2] No such file or directory: '/tmp/tmpjqjlhnsy/missing_dir/fuzz_test_886.txt'
+2025-12-01 23:47:14,589 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,591 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,591 | INFO     | dumpContentIntoFile  | dumpContentIntoFile ENTRY | content_type=str content_len=0 | path_type=str path='/tmp/tmpxr19l392'
+2025-12-01 23:47:14,591 | ERROR    | dumpContentIntoFile  | dumpContentIntoFile CRASHED | error_type=IsADirectoryError | error=[Errno 21] Is a directory: '/tmp/tmpxr19l392'
+2025-12-01 23:47:14,591 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,594 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,594 | INFO     | dumpContentIntoFile  | dumpContentIntoFile ENTRY | content_type=str content_len=19 | path_type=int path=6
+2025-12-01 23:47:14,594 | ERROR    | dumpContentIntoFile  | dumpContentIntoFile CRASHED | error_type=OSError | error=[Errno 9] Bad file descriptor
+2025-12-01 23:47:14,594 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,597 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,597 | INFO     | dumpContentIntoFile  | dumpContentIntoFile ENTRY | content_type=str content_len=423 | path_type=NoneType path=None
+2025-12-01 23:47:14,597 | ERROR    | dumpContentIntoFile  | dumpContentIntoFile CRASHED | error_type=TypeError | error=expected str, bytes or os.PathLike object, not NoneType
+2025-12-01 23:47:14,597 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,599 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,599 | INFO     | dumpContentIntoFile  | dumpContentIntoFile ENTRY | content_type=NoneType content_len=4 | path_type=NoneType path=None
+2025-12-01 23:47:14,599 | ERROR    | dumpContentIntoFile  | dumpContentIntoFile CRASHED | error_type=TypeError | error=expected str, bytes or os.PathLike object, not NoneType
+2025-12-01 23:47:14,599 | INFO     | dumpContentIntoFile  | ================================================================================
+2025-12-01 23:47:14,601 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,601 | INFO     | getPythonFileCount   | getPythonFileCount ENTRY | path_type=NoneType path=None
+2025-12-01 23:47:14,601 | ERROR    | getPythonFileCount   | getPythonFileCount CRASHED | error_type=TypeError | error=expected str, bytes or os.PathLike object, not NoneType
+2025-12-01 23:47:14,602 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,603 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,603 | INFO     | getPythonFileCount   | getPythonFileCount ENTRY | path_type=int path=123
+2025-12-01 23:47:14,604 | ERROR    | getPythonFileCount   | getPythonFileCount CRASHED | error_type=TypeError | error=expected str, bytes or os.PathLike object, not int
+2025-12-01 23:47:14,604 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,606 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,606 | INFO     | getPythonFileCount   | getPythonFileCount ENTRY | path_type=str path='/tmp/missing_dir_94984'
+2025-12-01 23:47:14,606 | INFO     | getPythonFileCount   | getPythonFileCount EXIT | python_files=0
+2025-12-01 23:47:14,607 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,607 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,607 | INFO     | getPythonFileCount   | getPythonFileCount ENTRY | path_type=str path='/tmp/tmpkvt6ri6v/lone.py'
+2025-12-01 23:47:14,607 | INFO     | getPythonFileCount   | getPythonFileCount EXIT | python_files=0
+2025-12-01 23:47:14,607 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,607 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,607 | INFO     | getPythonFileCount   | getPythonFileCount ENTRY | path_type=str path='/tmp/tmp4dk2pnvo'
+2025-12-01 23:47:14,607 | INFO     | getPythonFileCount   | getPythonFileCount EXIT | python_files=0
+2025-12-01 23:47:14,607 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,609 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,609 | INFO     | getPythonFileCount   | getPythonFileCount ENTRY | path_type=str path='/tmp/tmpje0oldui'
+2025-12-01 23:47:14,609 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#1 | root.ipynb
+2025-12-01 23:47:14,609 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#2 | root.py
+2025-12-01 23:47:14,609 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#3 | nested.py
+2025-12-01 23:47:14,609 | INFO     | getPythonFileCount   | getPythonFileCount EXIT | python_files=3
+2025-12-01 23:47:14,609 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,610 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,610 | INFO     | getPythonFileCount   | getPythonFileCount ENTRY | path_type=str path='/tmp/tmp8nihdyvj'
+2025-12-01 23:47:14,610 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#1 | test0.py
+2025-12-01 23:47:14,610 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#2 | notebook0.ipynb
+2025-12-01 23:47:14,610 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#3 | test2.py
+2025-12-01 23:47:14,610 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#4 | test1.py
+2025-12-01 23:47:14,610 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#5 | test3.py
+2025-12-01 23:47:14,610 | INFO     | getPythonFileCount   | getPythonFileCount EXIT | python_files=5
+2025-12-01 23:47:14,610 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,611 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,611 | INFO     | getPythonFileCount   | getPythonFileCount ENTRY | path_type=str path='/tmp/tmp8jez1l3u'
+2025-12-01 23:47:14,611 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#1 | notebook4.ipynb
+2025-12-01 23:47:14,611 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#2 | test0.py
+2025-12-01 23:47:14,611 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#3 | notebook0.ipynb
+2025-12-01 23:47:14,612 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#4 | test2.py
+2025-12-01 23:47:14,612 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#5 | notebook1.ipynb
+2025-12-01 23:47:14,612 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#6 | test1.py
+2025-12-01 23:47:14,612 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#7 | test3.py
+2025-12-01 23:47:14,612 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#8 | notebook3.ipynb
+2025-12-01 23:47:14,612 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#9 | notebook2.ipynb
+2025-12-01 23:47:14,612 | INFO     | getPythonFileCount   | getPythonFileCount EXIT | python_files=9
+2025-12-01 23:47:14,612 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,613 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,613 | INFO     | getPythonFileCount   | getPythonFileCount ENTRY | path_type=str path='/tmp/tmpkhvuoeov'
+2025-12-01 23:47:14,613 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#1 | test0.py
+2025-12-01 23:47:14,613 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#2 | notebook0.ipynb
+2025-12-01 23:47:14,613 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#3 | test2.py
+2025-12-01 23:47:14,613 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#4 | notebook1.ipynb
+2025-12-01 23:47:14,614 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#5 | test1.py
+2025-12-01 23:47:14,614 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#6 | test3.py
+2025-12-01 23:47:14,614 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#7 | nested1.py
+2025-12-01 23:47:14,614 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#8 | nested0.py
+2025-12-01 23:47:14,614 | INFO     | getPythonFileCount   | getPythonFileCount EXIT | python_files=8
+2025-12-01 23:47:14,614 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,614 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,614 | INFO     | getPythonFileCount   | getPythonFileCount ENTRY | path_type=str path='/tmp/tmp8rf2trso'
+2025-12-01 23:47:14,614 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#1 | notebook4.ipynb
+2025-12-01 23:47:14,615 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#2 | test0.py
+2025-12-01 23:47:14,615 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#3 | notebook0.ipynb
+2025-12-01 23:47:14,615 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#4 | test2.py
+2025-12-01 23:47:14,615 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#5 | notebook1.ipynb
+2025-12-01 23:47:14,615 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#6 | test1.py
+2025-12-01 23:47:14,615 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#7 | test3.py
+2025-12-01 23:47:14,615 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#8 | notebook3.ipynb
+2025-12-01 23:47:14,615 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#9 | notebook2.ipynb
+2025-12-01 23:47:14,615 | INFO     | getPythonFileCount   | getPythonFileCount EXIT | python_files=9
+2025-12-01 23:47:14,615 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,616 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,616 | INFO     | getPythonFileCount   | getPythonFileCount ENTRY | path_type=str path='/tmp/tmp15wz0di3'
+2025-12-01 23:47:14,616 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#1 | test0.py
+2025-12-01 23:47:14,616 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#2 | notebook0.ipynb
+2025-12-01 23:47:14,616 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#3 | test2.py
+2025-12-01 23:47:14,616 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#4 | notebook1.ipynb
+2025-12-01 23:47:14,616 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#5 | test1.py
+2025-12-01 23:47:14,616 | INFO     | getPythonFileCount   | getPythonFileCount EXIT | python_files=5
+2025-12-01 23:47:14,616 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,617 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,617 | INFO     | getPythonFileCount   | getPythonFileCount ENTRY | path_type=str path='/tmp/tmpvgnh4cjo'
+2025-12-01 23:47:14,617 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#1 | test0.py
+2025-12-01 23:47:14,617 | INFO     | getPythonFileCount   | getPythonFileCount EXIT | python_files=1
+2025-12-01 23:47:14,617 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,617 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,617 | INFO     | getPythonFileCount   | getPythonFileCount ENTRY | path_type=str path='/tmp/tmpe9kyllef'
+2025-12-01 23:47:14,618 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#1 | notebook0.ipynb
+2025-12-01 23:47:14,618 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#2 | notebook1.ipynb
+2025-12-01 23:47:14,618 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#3 | notebook3.ipynb
+2025-12-01 23:47:14,618 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#4 | notebook2.ipynb
+2025-12-01 23:47:14,618 | INFO     | getPythonFileCount   | getPythonFileCount EXIT | python_files=4
+2025-12-01 23:47:14,618 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,618 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,619 | INFO     | getPythonFileCount   | getPythonFileCount ENTRY | path_type=str path='/tmp/tmp3labfswi'
+2025-12-01 23:47:14,619 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#1 | test0.py
+2025-12-01 23:47:14,619 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#2 | test2.py
+2025-12-01 23:47:14,619 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#3 | test1.py
+2025-12-01 23:47:14,619 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#4 | nested0.py
+2025-12-01 23:47:14,619 | INFO     | getPythonFileCount   | getPythonFileCount EXIT | python_files=4
+2025-12-01 23:47:14,619 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,619 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,619 | INFO     | getPythonFileCount   | getPythonFileCount ENTRY | path_type=str path='/tmp/tmp86wpqgrm'
+2025-12-01 23:47:14,620 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#1 | test0.py
+2025-12-01 23:47:14,620 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#2 | test4.py
+2025-12-01 23:47:14,620 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#3 | notebook0.ipynb
+2025-12-01 23:47:14,620 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#4 | test2.py
+2025-12-01 23:47:14,620 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#5 | test1.py
+2025-12-01 23:47:14,620 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#6 | test3.py
+2025-12-01 23:47:14,620 | INFO     | getPythonFileCount   | getPythonFileCount EXIT | python_files=6
+2025-12-01 23:47:14,620 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,620 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,620 | INFO     | getPythonFileCount   | getPythonFileCount ENTRY | path_type=str path='/tmp/tmphv55dnrc'
+2025-12-01 23:47:14,621 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#1 | test0.py
+2025-12-01 23:47:14,621 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#2 | notebook0.ipynb
+2025-12-01 23:47:14,621 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#3 | test2.py
+2025-12-01 23:47:14,621 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#4 | test1.py
+2025-12-01 23:47:14,621 | INFO     | getPythonFileCount   | getPythonFileCount EXIT | python_files=4
+2025-12-01 23:47:14,621 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,621 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,621 | INFO     | getPythonFileCount   | getPythonFileCount ENTRY | path_type=str path='/tmp/tmpaxks_7d3'
+2025-12-01 23:47:14,622 | INFO     | getPythonFileCount   | getPythonFileCount EXIT | python_files=0
+2025-12-01 23:47:14,622 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,622 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,622 | INFO     | getPythonFileCount   | getPythonFileCount ENTRY | path_type=str path='/tmp/tmpfrcrb1mj'
+2025-12-01 23:47:14,623 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#1 | test0.py
+2025-12-01 23:47:14,623 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#2 | notebook0.ipynb
+2025-12-01 23:47:14,623 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#3 | notebook1.ipynb
+2025-12-01 23:47:14,623 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#4 | test1.py
+2025-12-01 23:47:14,623 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#5 | nested0.py
+2025-12-01 23:47:14,623 | INFO     | getPythonFileCount   | getPythonFileCount EXIT | python_files=5
+2025-12-01 23:47:14,623 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,624 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,624 | INFO     | getPythonFileCount   | getPythonFileCount ENTRY | path_type=str path='/tmp/tmpbf7m36nz'
+2025-12-01 23:47:14,624 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#1 | test0.py
+2025-12-01 23:47:14,624 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#2 | notebook0.ipynb
+2025-12-01 23:47:14,624 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#3 | test2.py
+2025-12-01 23:47:14,624 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#4 | notebook1.ipynb
+2025-12-01 23:47:14,624 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#5 | test1.py
+2025-12-01 23:47:14,624 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#6 | test3.py
+2025-12-01 23:47:14,624 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#7 | notebook2.ipynb
+2025-12-01 23:47:14,624 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#8 | nested0.py
+2025-12-01 23:47:14,624 | INFO     | getPythonFileCount   | getPythonFileCount EXIT | python_files=8
+2025-12-01 23:47:14,624 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,625 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,625 | INFO     | getPythonFileCount   | getPythonFileCount ENTRY | path_type=str path='/tmp/tmp9p2y6qcn'
+2025-12-01 23:47:14,625 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#1 | test0.py
+2025-12-01 23:47:14,625 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#2 | notebook0.ipynb
+2025-12-01 23:47:14,625 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#3 | test2.py
+2025-12-01 23:47:14,625 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#4 | notebook1.ipynb
+2025-12-01 23:47:14,625 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#5 | test1.py
+2025-12-01 23:47:14,625 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#6 | test3.py
+2025-12-01 23:47:14,625 | DEBUG    | getPythonFileCount   | getPythonFileCount: found file#7 | notebook2.ipynb
+2025-12-01 23:47:14,625 | INFO     | getPythonFileCount   | getPythonFileCount EXIT | python_files=7
+2025-12-01 23:47:14,625 | INFO     | getPythonFileCount   | ================================================================================
+2025-12-01 23:47:14,626 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,626 | INFO     | checkPythonFile      | checkPythonFile ENTRY | path_type=NoneType path=None
+2025-12-01 23:47:14,626 | ERROR    | checkPythonFile      | checkPythonFile CRASHED | error_type=TypeError | error=expected str, bytes or os.PathLike object, not NoneType
+2025-12-01 23:47:14,626 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,628 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,628 | INFO     | checkPythonFile      | checkPythonFile ENTRY | path_type=int path=123
+2025-12-01 23:47:14,628 | ERROR    | checkPythonFile      | checkPythonFile CRASHED | error_type=TypeError | error=expected str, bytes or os.PathLike object, not int
+2025-12-01 23:47:14,628 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,630 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,630 | INFO     | checkPythonFile      | checkPythonFile ENTRY | path_type=str path=''
+2025-12-01 23:47:14,630 | INFO     | checkPythonFile      | checkPythonFile EXIT | files_processed=0 | total_matches=0
+2025-12-01 23:47:14,630 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,631 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,631 | INFO     | checkPythonFile      | checkPythonFile ENTRY | path_type=str path='/tmp/tmpohp3u888/model.py'
+2025-12-01 23:47:14,631 | INFO     | checkPythonFile      | checkPythonFile EXIT | files_processed=0 | total_matches=0
+2025-12-01 23:47:14,631 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,631 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,631 | INFO     | checkPythonFile      | checkPythonFile ENTRY | path_type=str path='/tmp/tmpbm35bt_4'
+2025-12-01 23:47:14,631 | DEBUG    | checkPythonFile      | checkPythonFile: processing file#1 | upper.py
+2025-12-01 23:47:14,632 | DEBUG    | checkPythonFile      | checkPythonFile: match#1 | pattern=sklearn
+2025-12-01 23:47:14,632 | INFO     | checkPythonFile      | checkPythonFile EXIT | files_processed=1 | total_matches=1
+2025-12-01 23:47:14,632 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,632 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,632 | INFO     | checkPythonFile      | checkPythonFile ENTRY | path_type=str path='/tmp/tmpr2_4ptiv'
+2025-12-01 23:47:14,632 | DEBUG    | checkPythonFile      | checkPythonFile: processing file#1 | notebook.ipynb
+2025-12-01 23:47:14,632 | DEBUG    | checkPythonFile      | checkPythonFile: match#1 | pattern=tensorflow
+2025-12-01 23:47:14,632 | INFO     | checkPythonFile      | checkPythonFile EXIT | files_processed=1 | total_matches=1
+2025-12-01 23:47:14,632 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,633 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,633 | INFO     | checkPythonFile      | checkPythonFile ENTRY | path_type=str path='/tmp/tmprgjc2y39'
+2025-12-01 23:47:14,633 | DEBUG    | checkPythonFile      | checkPythonFile: processing file#1 | nested.py
+2025-12-01 23:47:14,633 | DEBUG    | checkPythonFile      | checkPythonFile: match#1 | pattern=keras
+2025-12-01 23:47:14,633 | DEBUG    | checkPythonFile      | checkPythonFile: match#2 | pattern=torch
+2025-12-01 23:47:14,633 | INFO     | checkPythonFile      | checkPythonFile EXIT | files_processed=1 | total_matches=2
+2025-12-01 23:47:14,633 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,634 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,634 | INFO     | checkPythonFile      | checkPythonFile ENTRY | path_type=str path='/tmp/tmp6leomq4s'
+2025-12-01 23:47:14,634 | DEBUG    | checkPythonFile      | checkPythonFile: processing file#1 | train.ipynb
+2025-12-01 23:47:14,634 | DEBUG    | checkPythonFile      | checkPythonFile: match#1 | pattern=torch
+2025-12-01 23:47:14,634 | INFO     | checkPythonFile      | checkPythonFile EXIT | files_processed=1 | total_matches=1
+2025-12-01 23:47:14,634 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,635 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,635 | INFO     | checkPythonFile      | checkPythonFile ENTRY | path_type=str path='/tmp/tmpm2zl1j77'
+2025-12-01 23:47:14,635 | DEBUG    | checkPythonFile      | checkPythonFile: processing file#1 | train.ipynb
+2025-12-01 23:47:14,635 | DEBUG    | checkPythonFile      | checkPythonFile: match#1 | pattern=pyqlearning
+2025-12-01 23:47:14,635 | DEBUG    | checkPythonFile      | checkPythonFile: processing file#2 | extra.py
+2025-12-01 23:47:14,635 | INFO     | checkPythonFile      | checkPythonFile EXIT | files_processed=2 | total_matches=1
+2025-12-01 23:47:14,635 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,636 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,636 | INFO     | checkPythonFile      | checkPythonFile ENTRY | path_type=str path='/tmp/tmp_s16ajjy'
+2025-12-01 23:47:14,636 | DEBUG    | checkPythonFile      | checkPythonFile: processing file#1 | model.py
+2025-12-01 23:47:14,636 | DEBUG    | checkPythonFile      | checkPythonFile: match#1 | pattern=chainer
+2025-12-01 23:47:14,636 | DEBUG    | checkPythonFile      | checkPythonFile: processing file#2 | extra.py
+2025-12-01 23:47:14,636 | DEBUG    | checkPythonFile      | checkPythonFile: match#2 | pattern=tensorflow
+2025-12-01 23:47:14,636 | INFO     | checkPythonFile      | checkPythonFile EXIT | files_processed=2 | total_matches=2
+2025-12-01 23:47:14,636 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,637 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,637 | INFO     | checkPythonFile      | checkPythonFile ENTRY | path_type=str path='/tmp/tmpt4pdmcdv'
+2025-12-01 23:47:14,637 | DEBUG    | checkPythonFile      | checkPythonFile: processing file#1 | model.py
+2025-12-01 23:47:14,637 | DEBUG    | checkPythonFile      | checkPythonFile: match#1 | pattern=rl
+2025-12-01 23:47:14,637 | DEBUG    | checkPythonFile      | checkPythonFile: match#2 | pattern=rl_coach
+2025-12-01 23:47:14,637 | DEBUG    | checkPythonFile      | checkPythonFile: processing file#2 | extra.py
+2025-12-01 23:47:14,637 | DEBUG    | checkPythonFile      | checkPythonFile: match#3 | pattern=rl
+2025-12-01 23:47:14,637 | INFO     | checkPythonFile      | checkPythonFile EXIT | files_processed=2 | total_matches=3
+2025-12-01 23:47:14,637 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,638 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,638 | INFO     | checkPythonFile      | checkPythonFile ENTRY | path_type=str path='/tmp/tmp1mcceyi4'
+2025-12-01 23:47:14,638 | DEBUG    | checkPythonFile      | checkPythonFile: processing file#1 | train.ipynb
+2025-12-01 23:47:14,638 | DEBUG    | checkPythonFile      | checkPythonFile: processing file#2 | extra.py
+2025-12-01 23:47:14,638 | DEBUG    | checkPythonFile      | checkPythonFile: match#1 | pattern=h5py
+2025-12-01 23:47:14,638 | INFO     | checkPythonFile      | checkPythonFile EXIT | files_processed=2 | total_matches=1
+2025-12-01 23:47:14,638 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,638 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,638 | INFO     | checkPythonFile      | checkPythonFile ENTRY | path_type=str path='/tmp/tmphjdew8sp'
+2025-12-01 23:47:14,639 | DEBUG    | checkPythonFile      | checkPythonFile: processing file#1 | model.py
+2025-12-01 23:47:14,639 | DEBUG    | checkPythonFile      | checkPythonFile: match#1 | pattern=stable_baselines
+2025-12-01 23:47:14,639 | DEBUG    | checkPythonFile      | checkPythonFile: processing file#2 | extra.py
+2025-12-01 23:47:14,639 | DEBUG    | checkPythonFile      | checkPythonFile: match#2 | pattern=tensorflow
+2025-12-01 23:47:14,639 | INFO     | checkPythonFile      | checkPythonFile EXIT | files_processed=2 | total_matches=2
+2025-12-01 23:47:14,639 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,639 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,639 | INFO     | checkPythonFile      | checkPythonFile ENTRY | path_type=str path='/tmp/tmpj76bn26z'
+2025-12-01 23:47:14,640 | DEBUG    | checkPythonFile      | checkPythonFile: processing file#1 | model.py
+2025-12-01 23:47:14,640 | DEBUG    | checkPythonFile      | checkPythonFile: match#1 | pattern=rl
+2025-12-01 23:47:14,640 | DEBUG    | checkPythonFile      | checkPythonFile: match#2 | pattern=rl_coach
+2025-12-01 23:47:14,640 | INFO     | checkPythonFile      | checkPythonFile EXIT | files_processed=1 | total_matches=2
+2025-12-01 23:47:14,640 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,640 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,640 | INFO     | checkPythonFile      | checkPythonFile ENTRY | path_type=str path='/tmp/tmpgeoyx9qz'
+2025-12-01 23:47:14,640 | DEBUG    | checkPythonFile      | checkPythonFile: processing file#1 | train.ipynb
+2025-12-01 23:47:14,641 | DEBUG    | checkPythonFile      | checkPythonFile: match#1 | pattern=rl
+2025-12-01 23:47:14,641 | DEBUG    | checkPythonFile      | checkPythonFile: match#2 | pattern=chainer
+2025-12-01 23:47:14,641 | DEBUG    | checkPythonFile      | checkPythonFile: match#3 | pattern=chainerrl
+2025-12-01 23:47:14,641 | INFO     | checkPythonFile      | checkPythonFile EXIT | files_processed=1 | total_matches=3
+2025-12-01 23:47:14,641 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,641 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,641 | INFO     | checkPythonFile      | checkPythonFile ENTRY | path_type=str path='/tmp/tmpd83zdi9i'
+2025-12-01 23:47:14,641 | DEBUG    | checkPythonFile      | checkPythonFile: processing file#1 | model.py
+2025-12-01 23:47:14,641 | DEBUG    | checkPythonFile      | checkPythonFile: match#1 | pattern=rl
+2025-12-01 23:47:14,641 | DEBUG    | checkPythonFile      | checkPythonFile: match#2 | pattern=rl_coach
+2025-12-01 23:47:14,642 | INFO     | checkPythonFile      | checkPythonFile EXIT | files_processed=1 | total_matches=2
+2025-12-01 23:47:14,642 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,642 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,642 | INFO     | checkPythonFile      | checkPythonFile ENTRY | path_type=str path='/tmp/tmp4f7bomge'
+2025-12-01 23:47:14,642 | DEBUG    | checkPythonFile      | checkPythonFile: processing file#1 | model.py
+2025-12-01 23:47:14,642 | DEBUG    | checkPythonFile      | checkPythonFile: match#1 | pattern=gym
+2025-12-01 23:47:14,642 | INFO     | checkPythonFile      | checkPythonFile EXIT | files_processed=1 | total_matches=1
+2025-12-01 23:47:14,642 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,643 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,643 | INFO     | checkPythonFile      | checkPythonFile ENTRY | path_type=str path='/tmp/tmpiy4pfvt0'
+2025-12-01 23:47:14,643 | DEBUG    | checkPythonFile      | checkPythonFile: processing file#1 | train.ipynb
+2025-12-01 23:47:14,643 | DEBUG    | checkPythonFile      | checkPythonFile: match#1 | pattern=sklearn
+2025-12-01 23:47:14,643 | INFO     | checkPythonFile      | checkPythonFile EXIT | files_processed=1 | total_matches=1
+2025-12-01 23:47:14,643 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,643 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,644 | INFO     | checkPythonFile      | checkPythonFile ENTRY | path_type=str path='/tmp/tmp3bn1h2ap'
+2025-12-01 23:47:14,644 | DEBUG    | checkPythonFile      | checkPythonFile: processing file#1 | model.py
+2025-12-01 23:47:14,644 | DEBUG    | checkPythonFile      | checkPythonFile: match#1 | pattern=rl
+2025-12-01 23:47:14,644 | DEBUG    | checkPythonFile      | checkPythonFile: match#2 | pattern=rl_coach
+2025-12-01 23:47:14,644 | INFO     | checkPythonFile      | checkPythonFile EXIT | files_processed=1 | total_matches=2
+2025-12-01 23:47:14,644 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,644 | INFO     | checkPythonFile      | ================================================================================
+2025-12-01 23:47:14,644 | INFO     | checkPythonFile      | checkPythonFile ENTRY | path_type=str path='/tmp/tmpn3b35uqc'
+2025-12-01 23:47:14,645 | DEBUG    | checkPythonFile      | checkPythonFile: processing file#1 | model.py
+2025-12-01 23:47:14,645 | DEBUG    | checkPythonFile      | checkPythonFile: match#1 | pattern=tf
+2025-12-01 23:47:14,645 | INFO     | checkPythonFile      | checkPythonFile EXIT | files_processed=1 | total_matches=1
+2025-12-01 23:47:14,645 | INFO     | checkPythonFile      | ================================================================================
