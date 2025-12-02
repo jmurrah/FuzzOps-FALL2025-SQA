@@ -19,6 +19,7 @@ from fuzz_cases import (
 NUM_ITERATIONS = 20
 BUGS_FOUND = []
 LOG_FILE = "mining_fuzz_bug_report.log"
+random.seed(2025)
 
 # import the mining module
 mining = SourceFileLoader(
@@ -99,6 +100,7 @@ def fuzz_make_chunks(iterations):
                     ]
                 )
                 label = f"Size: {size}"
+
             result = list(mining.makeChunks(data, size))
             flattened = [item for sublist in result for item in sublist]
             if flattened != data:
@@ -136,6 +138,7 @@ def fuzz_days_between(iterations):
                 else:
                     d2 = start + timedelta(days=random.randint(-5000, 5000))
                 label = f"Random d1={d1}, d2={d2}"
+
             val = mining.days_between(d1, d2)
             expected = abs((d2 - d1).days)
             if val < 0:
