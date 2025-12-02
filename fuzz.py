@@ -5,7 +5,7 @@ import os
 import tempfile
 import traceback
 from datetime import datetime, timedelta
-from contextlib import contextmanager
+from contextlib import contextmanager, redirect_stdout, redirect_stderr
 from importlib.machinery import SourceFileLoader
 from fuzz_cases import (
     MAKE_CHUNKS_EDGE_CASES,
@@ -18,7 +18,8 @@ from fuzz_cases import (
 
 NUM_ITERATIONS = 20
 BUGS_FOUND = []
-LOG_FILE = "fuzz_forensics.log"
+LOG_FILE = "mining_fuzz_bug_report.log"
+random.seed(2025)
 
 # import the mining module
 mining = SourceFileLoader(
@@ -35,12 +36,13 @@ mining = SourceFileLoader(
 @contextmanager
 def suppress_stdout():
     with open(os.devnull, "w") as devnull:
-        old_stdout = sys.stdout
-        sys.stdout = devnull
-        try:
-            yield
-        finally:
-            sys.stdout = old_stdout
+        with redirect_stdout(devnull), redirect_stderr(devnull):
+            old_stdout = sys.stdout
+            sys.stdout = devnull
+            try:
+                yield
+            finally:
+                sys.stdout = old_stdout
 
 
 def log_bug(function_name, input_desc, exc):
@@ -98,6 +100,7 @@ def fuzz_make_chunks(iterations):
                     ]
                 )
                 label = f"Size: {size}"
+
             result = list(mining.makeChunks(data, size))
             flattened = [item for sublist in result for item in sublist]
             if flattened != data:
@@ -135,6 +138,7 @@ def fuzz_days_between(iterations):
                 else:
                     d2 = start + timedelta(days=random.randint(-5000, 5000))
                 label = f"Random d1={d1}, d2={d2}"
+
             val = mining.days_between(d1, d2)
             expected = abs((d2 - d1).days)
             if val < 0:

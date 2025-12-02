@@ -31,18 +31,18 @@ jobs:
           echo "Running fuzz.py..."
           python3 fuzz.py
 
-      # Step 5: Display fuzz_forensics.log
+      # Step 5: Display mining_fuzz_bug_report.log
       - name: Display Fuzz Logs
         if: always()
         run: |
           echo "==== Fuzz Forensics Log ===="
-          cat fuzz_forensics.log
+          cat mining_fuzz_bug_report.log
 
-      # Step 6: Upload fuzz_forensics.log artifact
+      # Step 6: Upload mining_fuzz_bug_report.log artifact
       - name: Upload Fuzz Logs
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: fuzz-logs
-          path: fuzz_forensics.log
+          path: mining_fuzz_bug_report.log
           if-no-files-found: ignore

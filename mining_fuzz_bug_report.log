@@ -1,0 +1,417 @@
+2025-12-01 23:47:14.489629 | Fuzz run started
+2025-12-01 23:47:14.493973 | [!] BUG IN makeChunks | Input: Iteration 1 | ZeroDivisionError: integer division or modulo by zero
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 104, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 62, in makeChunks
+    chunk_count = (len(the_list) + size_ - 1) // size_
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+ZeroDivisionError: integer division or modulo by zero
+
+2025-12-01 23:47:14.495276 | [!] BUG IN makeChunks | Input: size=-1 (negative step) (Iteration 2) | Exception: Output data mismatch
+Traceback:
+NoneType: None
+
+2025-12-01 23:47:14.497766 | [!] BUG IN makeChunks | Input: Iteration 3 | TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 104, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 62, in makeChunks
+    chunk_count = (len(the_list) + size_ - 1) // size_
+                   ~~~~~~~~~~~~~~^~~~~~~
+TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
+
+2025-12-01 23:47:14.500148 | [!] BUG IN makeChunks | Input: Iteration 4 | TypeError: unsupported operand type(s) for +: 'int' and 'str'
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 104, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 62, in makeChunks
+    chunk_count = (len(the_list) + size_ - 1) // size_
+                   ~~~~~~~~~~~~~~^~~~~~~
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+
+2025-12-01 23:47:14.503172 | [!] BUG IN makeChunks | Input: Iteration 5 | TypeError: 'float' object cannot be interpreted as an integer
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 104, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 66, in makeChunks
+    for i in range(0, len(the_list), size_):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'float' object cannot be interpreted as an integer
+
+2025-12-01 23:47:14.507226 | [!] BUG IN makeChunks | Input: Iteration 6 | ZeroDivisionError: integer division or modulo by zero
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 104, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 62, in makeChunks
+    chunk_count = (len(the_list) + size_ - 1) // size_
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~
+ZeroDivisionError: integer division or modulo by zero
+
+2025-12-01 23:47:14.510918 | [!] BUG IN makeChunks | Input: Iteration 8 | TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 104, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 62, in makeChunks
+    chunk_count = (len(the_list) + size_ - 1) // size_
+                   ~~~~~~~~~~~~~~^~~~~~~
+TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
+
+2025-12-01 23:47:14.513057 | [!] BUG IN makeChunks | Input: Iteration 9 | TypeError: unsupported operand type(s) for +: 'int' and 'str'
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 104, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 62, in makeChunks
+    chunk_count = (len(the_list) + size_ - 1) // size_
+                   ~~~~~~~~~~~~~~^~~~~~~
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+
+2025-12-01 23:47:14.516210 | [!] BUG IN makeChunks | Input: Iteration 11 | TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 104, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 62, in makeChunks
+    chunk_count = (len(the_list) + size_ - 1) // size_
+                   ~~~~~~~~~~~~~~^~~~~~~
+TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
+
+2025-12-01 23:47:14.518576 | [!] BUG IN makeChunks | Input: Iteration 12 | TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 104, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 62, in makeChunks
+    chunk_count = (len(the_list) + size_ - 1) // size_
+                   ~~~~~~~~~~~~~~^~~~~~~
+TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
+
+2025-12-01 23:47:14.533870 | [!] BUG IN makeChunks | Input: Iteration 19 | TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 104, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 62, in makeChunks
+    chunk_count = (len(the_list) + size_ - 1) // size_
+                   ~~~~~~~~~~~~~~^~~~~~~
+TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'
+
+2025-12-01 23:47:14.535837 | [!] BUG IN makeChunks | Input: Iteration 20 | TypeError: 'float' object cannot be interpreted as an integer
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 104, in fuzz_make_chunks
+    result = list(mining.makeChunks(data, size))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 66, in makeChunks
+    for i in range(0, len(the_list), size_):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'float' object cannot be interpreted as an integer
+
+2025-12-01 23:47:14.541018 | [!] BUG IN days_between | Input: Iteration 7 | TypeError: unsupported operand type(s) for -: 'datetime.datetime' and 'str'
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 142, in fuzz_days_between
+    val = mining.days_between(d1, d2)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 136, in days_between
+    days_between = abs((d2_ - d1_).days)
+                        ~~~~^~~~~
+TypeError: unsupported operand type(s) for -: 'datetime.datetime' and 'str'
+
+2025-12-01 23:47:14.543591 | [!] BUG IN days_between | Input: Iteration 8 | TypeError: unsupported operand type(s) for -: 'str' and 'datetime.datetime'
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 142, in fuzz_days_between
+    val = mining.days_between(d1, d2)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 136, in days_between
+    days_between = abs((d2_ - d1_).days)
+                        ~~~~^~~~~
+TypeError: unsupported operand type(s) for -: 'str' and 'datetime.datetime'
+
+2025-12-01 23:47:14.546401 | [!] BUG IN days_between | Input: Iteration 9 | TypeError: unsupported operand type(s) for -: 'datetime.datetime' and 'NoneType'
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 142, in fuzz_days_between
+    val = mining.days_between(d1, d2)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 136, in days_between
+    days_between = abs((d2_ - d1_).days)
+                        ~~~~^~~~~
+TypeError: unsupported operand type(s) for -: 'datetime.datetime' and 'NoneType'
+
+2025-12-01 23:47:14.548729 | [!] BUG IN days_between | Input: Iteration 10 | TypeError: unsupported operand type(s) for -: 'NoneType' and 'datetime.datetime'
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 142, in fuzz_days_between
+    val = mining.days_between(d1, d2)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 136, in days_between
+    days_between = abs((d2_ - d1_).days)
+                        ~~~~^~~~~
+TypeError: unsupported operand type(s) for -: 'NoneType' and 'datetime.datetime'
+
+2025-12-01 23:47:14.550836 | [!] BUG IN days_between | Input: Iteration 11 | TypeError: unsupported operand type(s) for -: 'datetime.datetime' and 'int'
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 142, in fuzz_days_between
+    val = mining.days_between(d1, d2)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 136, in days_between
+    days_between = abs((d2_ - d1_).days)
+                        ~~~~^~~~~
+TypeError: unsupported operand type(s) for -: 'datetime.datetime' and 'int'
+
+2025-12-01 23:47:14.555529 | [!] BUG IN days_between | Input: Iteration 19 | TypeError: unsupported operand type(s) for -: 'str' and 'datetime.datetime'
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 142, in fuzz_days_between
+    val = mining.days_between(d1, d2)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 136, in days_between
+    days_between = abs((d2_ - d1_).days)
+                        ~~~~^~~~~
+TypeError: unsupported operand type(s) for -: 'str' and 'datetime.datetime'
+
+2025-12-01 23:47:14.557865 | [!] BUG IN dumpContentIntoFile | Input: None content valid path (Iteration 2) | Exception: Unexpected success for content type <class 'NoneType'> and path type <class 'str'>
+Traceback:
+NoneType: None
+
+2025-12-01 23:47:14.560964 | [!] BUG IN dumpContentIntoFile | Input: path None (Iteration 3) | TypeError: expected str, bytes or os.PathLike object, not NoneType
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 205, in fuzz_dump_content
+    size_str = mining.dumpContentIntoFile(content, target_path)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 42, in dumpContentIntoFile
+    fileToWrite = open(fileP, 'w')
+                  ^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+
+2025-12-01 23:47:14.564544 | [!] BUG IN dumpContentIntoFile | Input: path int (Iteration 4) | OSError: [Errno 9] Bad file descriptor
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 205, in fuzz_dump_content
+    size_str = mining.dumpContentIntoFile(content, target_path)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 42, in dumpContentIntoFile
+    fileToWrite = open(fileP, 'w')
+                  ^^^^^^^^^^^^^^^^
+OSError: [Errno 9] Bad file descriptor
+
+2025-12-01 23:47:14.567066 | [!] BUG IN dumpContentIntoFile | Input: path is directory (Iteration 5) | IsADirectoryError: [Errno 21] Is a directory: '/tmp/tmp6z6elgbv'
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 205, in fuzz_dump_content
+    size_str = mining.dumpContentIntoFile(content, target_path)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 42, in dumpContentIntoFile
+    fileToWrite = open(fileP, 'w')
+                  ^^^^^^^^^^^^^^^^
+IsADirectoryError: [Errno 21] Is a directory: '/tmp/tmp6z6elgbv'
+
+2025-12-01 23:47:14.570177 | [!] BUG IN dumpContentIntoFile | Input: missing parent directories (Iteration 6) | FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpftrg1k2y/missing_dir/fuzz_test_621.txt'
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 205, in fuzz_dump_content
+    size_str = mining.dumpContentIntoFile(content, target_path)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 42, in dumpContentIntoFile
+    fileToWrite = open(fileP, 'w')
+                  ^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpftrg1k2y/missing_dir/fuzz_test_621.txt'
+
+2025-12-01 23:47:14.572448 | [!] BUG IN dumpContentIntoFile | Input: bytes content (Iteration 7) | Exception: Unexpected success for content type <class 'bytes'> and path type <class 'str'>
+Traceback:
+NoneType: None
+
+2025-12-01 23:47:14.575579 | [!] BUG IN dumpContentIntoFile | Input: Random case path_kind=none (Iteration 9) | TypeError: expected str, bytes or os.PathLike object, not NoneType
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 205, in fuzz_dump_content
+    size_str = mining.dumpContentIntoFile(content, target_path)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 42, in dumpContentIntoFile
+    fileToWrite = open(fileP, 'w')
+                  ^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+
+2025-12-01 23:47:14.578389 | [!] BUG IN dumpContentIntoFile | Input: Random case path_kind=none (Iteration 11) | TypeError: expected str, bytes or os.PathLike object, not NoneType
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 205, in fuzz_dump_content
+    size_str = mining.dumpContentIntoFile(content, target_path)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 42, in dumpContentIntoFile
+    fileToWrite = open(fileP, 'w')
+                  ^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+
+2025-12-01 23:47:14.580874 | [!] BUG IN dumpContentIntoFile | Input: Random case path_kind=int (Iteration 12) | OSError: [Errno 9] Bad file descriptor
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 205, in fuzz_dump_content
+    size_str = mining.dumpContentIntoFile(content, target_path)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 42, in dumpContentIntoFile
+    fileToWrite = open(fileP, 'w')
+                  ^^^^^^^^^^^^^^^^
+OSError: [Errno 9] Bad file descriptor
+
+2025-12-01 23:47:14.583676 | [!] BUG IN dumpContentIntoFile | Input: Random case path_kind=dir (Iteration 13) | IsADirectoryError: [Errno 21] Is a directory: '/tmp/tmpypsvbwol'
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 205, in fuzz_dump_content
+    size_str = mining.dumpContentIntoFile(content, target_path)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 42, in dumpContentIntoFile
+    fileToWrite = open(fileP, 'w')
+                  ^^^^^^^^^^^^^^^^
+IsADirectoryError: [Errno 21] Is a directory: '/tmp/tmpypsvbwol'
+
+2025-12-01 23:47:14.585893 | [!] BUG IN dumpContentIntoFile | Input: Random case path_kind=dir (Iteration 14) | IsADirectoryError: [Errno 21] Is a directory: '/tmp/tmp0h81kzz9'
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 205, in fuzz_dump_content
+    size_str = mining.dumpContentIntoFile(content, target_path)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 42, in dumpContentIntoFile
+    fileToWrite = open(fileP, 'w')
+                  ^^^^^^^^^^^^^^^^
+IsADirectoryError: [Errno 21] Is a directory: '/tmp/tmp0h81kzz9'
+
+2025-12-01 23:47:14.588273 | [!] BUG IN dumpContentIntoFile | Input: Random case path_kind=none (Iteration 15) | TypeError: expected str, bytes or os.PathLike object, not NoneType
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 205, in fuzz_dump_content
+    size_str = mining.dumpContentIntoFile(content, target_path)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 42, in dumpContentIntoFile
+    fileToWrite = open(fileP, 'w')
+                  ^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+
+2025-12-01 23:47:14.591060 | [!] BUG IN dumpContentIntoFile | Input: Random case path_kind=missing_parent (Iteration 16) | FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpjqjlhnsy/missing_dir/fuzz_test_886.txt'
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 205, in fuzz_dump_content
+    size_str = mining.dumpContentIntoFile(content, target_path)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 42, in dumpContentIntoFile
+    fileToWrite = open(fileP, 'w')
+                  ^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpjqjlhnsy/missing_dir/fuzz_test_886.txt'
+
+2025-12-01 23:47:14.593631 | [!] BUG IN dumpContentIntoFile | Input: Random case path_kind=dir (Iteration 17) | IsADirectoryError: [Errno 21] Is a directory: '/tmp/tmpxr19l392'
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 205, in fuzz_dump_content
+    size_str = mining.dumpContentIntoFile(content, target_path)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 42, in dumpContentIntoFile
+    fileToWrite = open(fileP, 'w')
+                  ^^^^^^^^^^^^^^^^
+IsADirectoryError: [Errno 21] Is a directory: '/tmp/tmpxr19l392'
+
+2025-12-01 23:47:14.596626 | [!] BUG IN dumpContentIntoFile | Input: Random case path_kind=int (Iteration 18) | OSError: [Errno 9] Bad file descriptor
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 205, in fuzz_dump_content
+    size_str = mining.dumpContentIntoFile(content, target_path)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 42, in dumpContentIntoFile
+    fileToWrite = open(fileP, 'w')
+                  ^^^^^^^^^^^^^^^^
+OSError: [Errno 9] Bad file descriptor
+
+2025-12-01 23:47:14.598880 | [!] BUG IN dumpContentIntoFile | Input: Random case path_kind=none (Iteration 19) | TypeError: expected str, bytes or os.PathLike object, not NoneType
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 205, in fuzz_dump_content
+    size_str = mining.dumpContentIntoFile(content, target_path)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 42, in dumpContentIntoFile
+    fileToWrite = open(fileP, 'w')
+                  ^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+
+2025-12-01 23:47:14.601348 | [!] BUG IN dumpContentIntoFile | Input: Random case path_kind=none (Iteration 20) | TypeError: expected str, bytes or os.PathLike object, not NoneType
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 205, in fuzz_dump_content
+    size_str = mining.dumpContentIntoFile(content, target_path)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 42, in dumpContentIntoFile
+    fileToWrite = open(fileP, 'w')
+                  ^^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+
+2025-12-01 23:47:14.603496 | [!] BUG IN getPythonFileCount | Input: Iteration 1 | TypeError: expected str, bytes or os.PathLike object, not NoneType
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 244, in fuzz_get_python_file_count
+    count = mining.getPythonFileCount(case["path"])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 211, in getPythonFileCount
+    for root_, dirnames, filenames in os.walk(path2dir):
+                                      ^^^^^^^^^^^^^^^^^
+  File "<frozen os>", line 348, in walk
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+
+2025-12-01 23:47:14.606353 | [!] BUG IN getPythonFileCount | Input: Iteration 2 | TypeError: expected str, bytes or os.PathLike object, not int
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 244, in fuzz_get_python_file_count
+    count = mining.getPythonFileCount(case["path"])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 211, in getPythonFileCount
+    for root_, dirnames, filenames in os.walk(path2dir):
+                                      ^^^^^^^^^^^^^^^^^
+  File "<frozen os>", line 348, in walk
+TypeError: expected str, bytes or os.PathLike object, not int
+
+2025-12-01 23:47:14.608464 | [!] BUG IN getPythonFileCount | Input: uppercase extensions (Iteration 5) | Exception: Expected 2 files, got 0
+Traceback:
+NoneType: None
+
+2025-12-01 23:47:14.628019 | [!] BUG IN checkPythonFile | Input: Iteration 1 | TypeError: expected str, bytes or os.PathLike object, not NoneType
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 366, in fuzz_check_python_file
+    hits = mining.checkPythonFile(path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 99, in checkPythonFile
+    for root_, dirnames, filenames in os.walk(path2dir):
+                                      ^^^^^^^^^^^^^^^^^
+  File "<frozen os>", line 348, in walk
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+
+2025-12-01 23:47:14.630179 | [!] BUG IN checkPythonFile | Input: Iteration 2 | TypeError: expected str, bytes or os.PathLike object, not int
+Traceback:
+Traceback (most recent call last):
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/fuzz.py", line 366, in fuzz_check_python_file
+    hits = mining.checkPythonFile(path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/jacob/Projects/FuzzOps-FALL2025-SQA/MLForensics-farzana/mining/mining.py", line 99, in checkPythonFile
+    for root_, dirnames, filenames in os.walk(path2dir):
+                                      ^^^^^^^^^^^^^^^^^
+  File "<frozen os>", line 348, in walk
+TypeError: expected str, bytes or os.PathLike object, not int
+

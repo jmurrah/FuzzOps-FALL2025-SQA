@@ -9,7 +9,7 @@ import shutil
 from git import Repo, exc 
 import logging
 logger = logging.getLogger(__name__)
-log_filename = f"mining_forensics.log"
+log_filename = f"mining_log_forensics.log"
 logging.basicConfig(
     level=logging.DEBUG,
     format='%(asctime)s | %(levelname)-8s | %(funcName)-20s | %(message)s',
